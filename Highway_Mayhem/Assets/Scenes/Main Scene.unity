@@ -621,9 +621,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1662302103267390123, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
+      propertyPath: lookSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1662302103481221340, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1662302103481390850, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1662302103481409802, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_RootOrder
@@ -639,7 +647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1662302103481409802, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1662302103481409802, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_LocalRotation.w
