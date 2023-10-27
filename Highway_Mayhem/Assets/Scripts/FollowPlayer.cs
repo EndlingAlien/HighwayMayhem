@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    //create a reference to a gameObject
-    public GameObject player;
+    PlayerController player;
+    Vector3 offset = new Vector3(0, 8, -10);
 
-    //variable to have camera follow behind
-    private Vector3 offset = new Vector3(0, 8, -17);
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private void Start() {
+        player = FindObjectOfType<PlayerController>();
     }
 
-    // Update is called once per frame
-    //lateUpdate will be called after Update, camera wont stutter anymore
     void LateUpdate()
     {
-        //offset the camera to follow behind player, after +
         transform.position = player.transform.position + offset;
-
     }
 }

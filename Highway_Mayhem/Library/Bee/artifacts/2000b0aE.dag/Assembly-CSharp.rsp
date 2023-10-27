@@ -333,6 +333,8 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/FollowPlayer.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/RepeatHighway.cs"
+"Assets/Scripts/RotateWheels.cs"
 -langversion:9.0
 
 /deterministic

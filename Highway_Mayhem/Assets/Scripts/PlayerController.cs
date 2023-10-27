@@ -5,17 +5,36 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables
 
-    [SerializeField] float playerSpeed = 5f;
-    [SerializeField] float lookSpeed = 5f;
-    [SerializeField] float rotationFactor = 1;
+    [Header("Player Config")]
+    [Tooltip("Turret gameobject refrence")]
     [SerializeField] Transform tankTurret;
-    float currentRotation;
-    float minRotation = -40;
-    float maxRotation = 40;
+    [Space(10)]
 
+    [Header("Speed Variables")]
+    [Tooltip("Speed of tank moving on x-axis")]
+    [SerializeField] float playerSpeed = 8.5f;
+    [Tooltip("Speed of turret rotation")]
+    [SerializeField] float lookSpeed = 32f;
+    [Space(10)]
+
+    [Header("Rotation Variable")]
+    [Tooltip("Speed of tank rotation when on x-axis")]
+    [SerializeField] float rotationFactor = 2.5f;
+   
+    //Turret Rotation clamp
+    float currentRotation;
+    float minRot = -40;
+    float maxRot = 40;
+    //X-Axis Movement Clamp
+    float minX = -8.0f;
+    float maxX = 23.0f;
+    //input variables
     Vector2 moveInput;
     Vector2 lookInput;
+    #endregion
+
 
     void Update()
     {
@@ -30,17 +49,17 @@ public class PlayerController : MonoBehaviour
     }
 
     #region Turret Control Methods
-        void MoveTurret()
-        {
-            float newRotation = currentRotation + lookInput.x * lookSpeed * Time.deltaTime;
-            SetCurrentRotation(newRotation);
-        }
-    
-        void SetCurrentRotation(float rot)
-        {
-            currentRotation = Mathf.Clamp(rot, minRotation, maxRotation);
-            tankTurret.transform.rotation = Quaternion.Euler(0, rot, 0);
-        }
+    void MoveTurret()
+    {
+        float newRotation = currentRotation + lookInput.x * lookSpeed * Time.deltaTime;
+        SetCurrentRotation(newRotation);
+    }
+
+    void SetCurrentRotation(float rot)
+    {
+        currentRotation = Mathf.Clamp(rot, minRot, maxRot);
+        tankTurret.transform.rotation = Quaternion.Euler(0, rot, 0);
+    }
     #endregion
 
     #region Tank Control Methods
@@ -73,12 +92,18 @@ public class PlayerController : MonoBehaviour
 
     Vector2 ProcessMovement()
     {
-        Vector2 movement = new Vector2(moveInput.x * playerSpeed * Time.deltaTime, 0);
+        float movementX = moveInput.x * playerSpeed * Time.deltaTime;
+        float currentX = transform.position.x;
 
-        Vector3 newPosition = transform.position + new Vector3(movement.x, 0, 0);
+        // Calculate the new X position while clamping it.
+        float newX = Mathf.Clamp(currentX + movementX, minX, maxX);
+
+        Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
+
         transform.position = newPosition;
-        return movement;
+        return new Vector2(newX - currentX, 0);
     }
+
     #endregion
 
     #region Input methods
