@@ -35,7 +35,7 @@
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
+                    "name": "Arrows",
                     "id": "bbf87f25-38a0-4bcc-8d85-6190d4057c34",
                     "path": "2DVector",
                     "interactions": "",
@@ -68,7 +68,7 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "A & D",
                     "id": "fd679a01-b7b9-4140-8299-f6bf7fcdac30",
                     "path": "2DVector",
                     "interactions": "",
