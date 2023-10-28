@@ -54,17 +54,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2323434483232830637}
     m_Modifications:
-    - target: {fileID: -2538399305634497281, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4538831000357269521, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
       propertyPath: m_Name
       value: Truck (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538831000357269521, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4538831000357530951, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
       propertyPath: m_RootOrder
@@ -110,25 +102,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6179039264755510197, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2538399305634497281, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-    - {fileID: 6179039264755510197, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
 --- !u!4 &3395095747032770413 stripped
 Transform:
@@ -142,10 +116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2323434483232830637}
     m_Modifications:
-    - target: {fileID: -8021830231300999724, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8602790639003979186, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -194,13 +164,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8602790639004237236, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: -8021830231300999724, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
 --- !u!4 &5623281066337623347 stripped
 Transform:

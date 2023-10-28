@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4003505502783905148}
   m_Layer: 0
   m_Name: car Truck van
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,30 +55,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498029263607073057}
     m_Modifications:
-    - target: {fileID: -8021830231300999724, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1822622338898578712, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752066391113839742, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752066391113839742, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6752066391113839742, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8421762656620570770, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8602790639003979186, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -127,13 +103,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 8602790639004237236, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8421762656620570770, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
-    - {fileID: -8021830231300999724, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 061f0e31044314c1283b4eae4d892c8d, type: 3}
 --- !u!4 &4706460041064815610 stripped
 Transform:
@@ -147,21 +117,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498029263607073057}
     m_Modifications:
-    - target: {fileID: -448127529614036774, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3155655563949167446, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5505603411216201884, guid: e247fae79ba1440eea7ac142de972121, type: 3}
       propertyPath: m_Name
       value: Van (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505603411216201884, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5505603411216689276, guid: e247fae79ba1440eea7ac142de972121, type: 3}
       propertyPath: m_RootOrder
@@ -207,9 +165,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: -448127529614036774, guid: e247fae79ba1440eea7ac142de972121, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e247fae79ba1440eea7ac142de972121, type: 3}
 --- !u!4 &4178459508822607736 stripped
 Transform:
@@ -223,21 +179,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6498029263607073057}
     m_Modifications:
-    - target: {fileID: -2538399305634497281, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370955236387782503, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4538831000357269521, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
       propertyPath: m_Name
       value: Truck (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4538831000357269521, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4538831000357530951, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
       propertyPath: m_RootOrder
@@ -283,25 +227,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6179039264755510197, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7471053513059096495, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2538399305634497281, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
-    - {fileID: 6179039264755510197, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56f50f9d602c4d0d993e29119a0d803, type: 3}
 --- !u!4 &5409048899777320431 stripped
 Transform:

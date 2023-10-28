@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -123624465006510682}
   m_Layer: 0
   m_Name: Van Bus
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -54,21 +54,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5571551965476805012}
     m_Modifications:
-    - target: {fileID: -448127529614036774, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3155655563949167446, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5505603411216201884, guid: e247fae79ba1440eea7ac142de972121, type: 3}
       propertyPath: m_Name
       value: Van (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5505603411216201884, guid: e247fae79ba1440eea7ac142de972121, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 5505603411216689276, guid: e247fae79ba1440eea7ac142de972121, type: 3}
       propertyPath: m_RootOrder
@@ -114,9 +102,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: -448127529614036774, guid: e247fae79ba1440eea7ac142de972121, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e247fae79ba1440eea7ac142de972121, type: 3}
 --- !u!4 &82853301994337737 stripped
 Transform:
@@ -130,14 +116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5571551965476805012}
     m_Modifications:
-    - target: {fileID: -1291752953430024703, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4712480735344859749, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6333573804148819789, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -186,13 +164,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bus (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6333573804148946793, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: -1291752953430024703, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213039d6119d94f908f5b6aeaaba5f74, type: 3}
 --- !u!4 &3551231240914277089 stripped
 Transform:

@@ -362,7 +362,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!114 &534669906
 MonoBehaviour:
@@ -469,6 +469,23 @@ Transform:
   m_Father: {fileID: 1670591798}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1159722175 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 647356469771594908, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
+  m_PrefabInstance: {fileID: 1662302102738382111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1159722179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159722175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8520250ee63c541d9b473cc43fb9745e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1172298003
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,7 +516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killVector: -40
-  failSafeZThreshold: 45
 --- !u!4 &1172298006
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +567,7 @@ Transform:
   - {fileID: 1312232381}
   - {fileID: 2093379048}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1670591797
 GameObject:
@@ -678,10 +694,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1662302103481221340, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1662302103481409802, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -725,6 +737,10 @@ PrefabInstance:
     - target: {fileID: 1662302103481409802, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807202561613914830, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
+      propertyPath: CollisionModule.collisionMessages
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6127ecf690fb04c4faacd950554be109, type: 3}
@@ -816,13 +832,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2095265358047093787, guid: 599f2e75a4e2449e487175399d6e37c0, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2684158
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095265358047093787, guid: 599f2e75a4e2449e487175399d6e37c0, type: 3}
+      propertyPath: m_Center.y
+      value: 1.404208
+      objectReference: {fileID: 0}
     - target: {fileID: 4320226323907875762, guid: 599f2e75a4e2449e487175399d6e37c0, type: 3}
       propertyPath: m_Name
       value: Highway
       objectReference: {fileID: 0}
     - target: {fileID: 5738843375766647260, guid: 599f2e75a4e2449e487175399d6e37c0, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5738843375766647260, guid: 599f2e75a4e2449e487175399d6e37c0, type: 3}
       propertyPath: m_LocalPosition.x

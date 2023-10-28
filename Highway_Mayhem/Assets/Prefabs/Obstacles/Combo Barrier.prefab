@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1823732676891367245}
   - component: {fileID: 5323241966927754635}
   - component: {fileID: 2060528358890803393}
-  - component: {fileID: 2847809511921191103}
-  m_Layer: 0
+  - component: {fileID: 7087093083217457569}
+  m_Layer: 6
   m_Name: Prop_Barrier02 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2847809511921191103
-MeshCollider:
+--- !u!65 &7087093083217457569
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,10 +94,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 78056cefff7010745ae502ceee2d13e2, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 3.1145606, y: 1.9099005, z: 0.58529663}
+  m_Center: {x: 0, y: 0.9549503, z: 0}
 --- !u!1 &2032236579786026377
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,10 +108,10 @@ GameObject:
   - component: {fileID: 2171966254788017330}
   - component: {fileID: 1969527727249478350}
   - component: {fileID: 5880067840271378406}
-  - component: {fileID: 5200987794222899134}
-  m_Layer: 0
+  - component: {fileID: 327020035460953908}
+  m_Layer: 6
   m_Name: Prop_Cone_01 (10)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,8 +181,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5200987794222899134
-MeshCollider:
+--- !u!65 &327020035460953908
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -192,10 +191,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5bb9a811cdd73fa42975794b4c22350f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.1703908, y: 1.7452259, z: 1.1703949}
+  m_Center: {x: 0, y: 0.87261295, z: 0}
 --- !u!1 &4705904004581344130
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,10 +257,10 @@ GameObject:
   - component: {fileID: 791975331407668752}
   - component: {fileID: 8747375071901893682}
   - component: {fileID: 2450277671454563705}
-  - component: {fileID: 4539140900332631840}
-  m_Layer: 0
+  - component: {fileID: 3014798097080752317}
+  m_Layer: 6
   m_Name: Barrel_02 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,8 +330,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4539140900332631840
-MeshCollider:
+--- !u!65 &3014798097080752317
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -342,10 +340,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bc0208005b6890d44994050c677eb13f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.94652724, y: 1.3434764, z: 0.9465271}
+  m_Center: {x: -0.000000044703484, y: 0.6717382, z: 0}
 --- !u!1 &6844264503913766398
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,10 +354,10 @@ GameObject:
   - component: {fileID: 292191885914048942}
   - component: {fileID: 6764976154444026903}
   - component: {fileID: 2590297448644419047}
-  - component: {fileID: 8398389753071488785}
-  m_Layer: 0
+  - component: {fileID: 2643979835158475347}
+  m_Layer: 6
   m_Name: Barrel_02 (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,8 +427,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8398389753071488785
-MeshCollider:
+--- !u!65 &2643979835158475347
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -440,10 +437,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bc0208005b6890d44994050c677eb13f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.94652724, y: 1.3434764, z: 0.9465271}
+  m_Center: {x: -0.000000044703484, y: 0.6717382, z: 0}
 --- !u!1 &7669891409947866901
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,10 +451,10 @@ GameObject:
   - component: {fileID: 2865961018513768562}
   - component: {fileID: 5607102321009463530}
   - component: {fileID: 7477886638892164125}
-  - component: {fileID: 233816383758262414}
-  m_Layer: 0
+  - component: {fileID: 5735148675430481514}
+  m_Layer: 6
   m_Name: Barrel_02 (3)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -528,8 +524,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &233816383758262414
-MeshCollider:
+--- !u!65 &5735148675430481514
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -538,10 +534,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bc0208005b6890d44994050c677eb13f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.94652724, y: 1.3434764, z: 0.9465271}
+  m_Center: {x: -0.000000044703484, y: 0.6717382, z: 0}
 --- !u!1 &8202886887279443522
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,10 +548,10 @@ GameObject:
   - component: {fileID: 4593347364929329662}
   - component: {fileID: 4977819057075912897}
   - component: {fileID: 4940754536844131927}
-  - component: {fileID: 1272804263541398087}
+  - component: {fileID: 2551093560218294278}
   m_Layer: 0
   m_Name: Barrel_02 (4)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -626,8 +621,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1272804263541398087
-MeshCollider:
+--- !u!65 &2551093560218294278
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -636,10 +631,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bc0208005b6890d44994050c677eb13f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.94652724, y: 1.3434764, z: 0.9465271}
+  m_Center: {x: -0.000000044703484, y: 0.6717382, z: 0}
 --- !u!1 &8498520272190116174
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,10 +645,10 @@ GameObject:
   - component: {fileID: 1787137779075652737}
   - component: {fileID: 1514932273303633519}
   - component: {fileID: 4086858955985906450}
-  - component: {fileID: 2016771754147654895}
-  m_Layer: 0
+  - component: {fileID: 5203663816301102925}
+  m_Layer: 6
   m_Name: Prop_Cone_01 (9)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,8 +718,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2016771754147654895
-MeshCollider:
+--- !u!65 &5203663816301102925
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -734,7 +728,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5bb9a811cdd73fa42975794b4c22350f, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.1703908, y: 1.7452259, z: 1.1703949}
+  m_Center: {x: 0, y: 0.87261295, z: 0}
