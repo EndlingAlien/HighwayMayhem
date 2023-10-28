@@ -7,6 +7,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] GameObject[] obstaclePrefabs;
     [SerializeField] GameObject[] carPrefabs;
     [SerializeField] Transform[] spawnPoint;
+    [SerializeField] Transform despawnObject;
 
     [SerializeField] float spawnDelay = 2f;
 
@@ -26,17 +27,17 @@ public class ObjectSpawner : MonoBehaviour
     IEnumerator RangeRandomizer()
     {
         //if player still alive, run 
-       while(true)
-       {
-        objectRange = Random.Range(1, 3);
-        laneRange = Random.Range(0, 4);
-        obstacleRange = Random.Range(0, 9);
-        carRange = Random.Range(0, 12);
+        while (true)
+        {
+            objectRange = Random.Range(1, 3); ;
+            laneRange = Random.Range(0, 4);
+            obstacleRange = Random.Range(0, 9);
+            carRange = Random.Range(0, 12);
 
-        SpawnObject();
+            SpawnObject();
 
-        yield return new WaitForSeconds(spawnDelay);
-       }
+            yield return new WaitForSeconds(spawnDelay);
+        }
     }
 
     void SpawnObject()
@@ -51,8 +52,7 @@ public class ObjectSpawner : MonoBehaviour
 
     private void CheckLaneChoice()
     {
-        Debug.Log(laneRange);
-       spawnTransform = spawnPoint[laneRange].GetComponent<Transform>();
+        spawnTransform = spawnPoint[laneRange].GetComponent<Transform>();
     }
 
     void CheckObjectChoice()
@@ -65,26 +65,22 @@ public class ObjectSpawner : MonoBehaviour
         {
             SpawnCar();
         }
-        else
-        {
-            Debug.Log("ERROR NULL OBJECT RANGE");
-        }
     }
 
     private void SpawnObstacle()
     {
         GameObject prefabToSpawn = obstaclePrefabs[obstacleRange];
-        Debug.Log("spawning obstacle Num: " + obstacleRange);
+        GameObject newObstacle = Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
 
-        Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
+        newObstacle.transform.SetParent(despawnObject.transform);
     }
 
     private void SpawnCar()
     {
         GameObject prefabToSpawn = carPrefabs[carRange];
-        Debug.Log("spawning Car Num: " + carRange);
+        GameObject newCar = Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
 
-        Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
+        newCar.transform.SetParent(despawnObject.transform);
     }
 
 
