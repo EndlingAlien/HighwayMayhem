@@ -10,6 +10,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] Transform despawnObject;
 
     [SerializeField] float spawnDelay = 2f;
+    bool playerAlive= true;
 
     int laneRange;
     int objectRange;
@@ -17,19 +18,25 @@ public class ObjectSpawner : MonoBehaviour
     int carRange;
 
     Transform spawnTransform;
+    DeathHandler deathHandler;
 
 
     private void Start()
     {
+        deathHandler = FindObjectOfType<DeathHandler>();
         StartCoroutine(RangeRandomizer());
+    }
+    private void Update()
+    {
+        playerAlive = deathHandler.IsPlayerAlive;
     }
 
     IEnumerator RangeRandomizer()
     {
         //if player still alive, run 
-        while (true)
+        while (playerAlive)
         {
-            objectRange = Random.Range(1, 3); ;
+            objectRange = Random.Range(1, 3);
             laneRange = Random.Range(0, 4);
             obstacleRange = Random.Range(0, 9);
             carRange = Random.Range(0, 12);

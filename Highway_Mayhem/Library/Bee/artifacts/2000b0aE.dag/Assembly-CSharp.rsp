@@ -331,6 +331,7 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Scripts/DeathHandler.cs"
 "Assets/Scripts/Obstacles/DespawnObject.cs"
 "Assets/Scripts/Obstacles/MoveOnHighway.cs"
 "Assets/Scripts/Obstacles/ObjectSpawner.cs"
@@ -340,6 +341,7 @@
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/RotateWheels.cs"
 "Assets/Scripts/RepeatHighway.cs"
+"Assets/Scripts/SceneLoader.cs"
 -langversion:9.0
 
 /deterministic

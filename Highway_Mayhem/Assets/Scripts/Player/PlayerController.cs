@@ -41,17 +41,28 @@ public class PlayerController : MonoBehaviour
     Vector2 moveInput;
     Vector2 lookInput;
     bool fireInput;
+    //Death Handler variables
+    DeathHandler deathHandler;
+    bool playerAlive;
     #endregion
 
+    private void Start()
+    {
+        deathHandler = FindObjectOfType<DeathHandler>();
+    }
 
     void Update()
     {
-        MoveTurret();
-        MoveTank();
-
-        if(fireInput)
+        playerAlive = deathHandler.IsPlayerAlive;
+        if (playerAlive)
         {
-            PlayTurretFlash();
+            MoveTurret();
+            MoveTank();
+
+            if (fireInput)
+            {
+                PlayTurretFlash();
+            }
         }
     }
 
@@ -147,7 +158,10 @@ public class PlayerController : MonoBehaviour
     void OnFire(InputValue value)
     {
         fireInput = value.isPressed;
-        ShootTurret(fireInput);
+        if (playerAlive)
+        {
+            ShootTurret(fireInput);
+        }
     }
     #endregion
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepeatHighway : MonoBehaviour
 {
-    float speed = 20f;
+     public float speed = 20f;
     Vector3 startPos;
     float repeatWidth;
 
