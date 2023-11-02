@@ -15,8 +15,6 @@ public class ObjectSpawner : MonoBehaviour
     [Header("Spawn Config")]
     [Tooltip("Spawn Points for above prefabs")]
     [SerializeField] Transform[] spawnPoint;
-    [Tooltip("How long inbetween prefab spawns")]
-    [SerializeField] float spawnDelay = 2f;
     [Space(10)]
 
     [Header("Prefab Parent")]
@@ -33,11 +31,17 @@ public class ObjectSpawner : MonoBehaviour
     //script variables
     Transform spawnTransform;
     DeathHandler deathHandler;
+    //GameMde Variables
+    float spawnDelay;
+    GameModeController gameMode;
     #endregion
 
     void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
+        gameMode = FindObjectOfType<GameModeController>();
+        spawnDelay = gameMode.CurrentGameMode.GetObstacleSpawnDelay();
+
         StartCoroutine(RangeRandomizer());
     }
 

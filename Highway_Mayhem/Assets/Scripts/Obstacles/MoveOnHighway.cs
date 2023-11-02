@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class MoveOnHighway : MonoBehaviour
 {
-    float speed = 20;
+    float speed;
+    GameModeController gameMode;
+    void Start()
+    {
+        gameMode = FindObjectOfType<GameModeController>();
+        speed = gameMode.CurrentGameMode.GetObstacleSpeed();
+    }
 
     void Update()
     {

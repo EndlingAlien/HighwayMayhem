@@ -15,13 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem turretFlash;
     [Space(10)]
 
-    [Header("Speed Variables")]
-    [Tooltip("Speed of tank moving on x-axis")]
-    [SerializeField] float playerSpeed = 8.5f;
-    [Tooltip("Speed of turret rotation")]
-    [SerializeField] float lookSpeed = 32f;
-    [Space(10)]
-
     [Header("Rotation Variable")]
     [Tooltip("Speed of tank rotation when on x-axis")]
     [SerializeField] float rotationFactor = 2.5f;
@@ -40,11 +33,40 @@ public class PlayerController : MonoBehaviour
     //Death Handler variables
     DeathHandler deathHandler;
     bool playerAlive;
+
+    //Gamemode vars
+    GameModeController gameMode;
+    float playerSpeed;
+    float lookSpeed;
+    bool hasBullets;
+    float bulletSpeed;
+    bool hasNewScale;
+    float newScale;
     #endregion
 
     void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
+        gameMode = FindObjectOfType<GameModeController>();
+        ConfigureGameModeVariables();
+
+        if (hasNewScale)
+        {
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+        }
+
+    }
+
+    void ConfigureGameModeVariables()
+    {
+        playerSpeed = gameMode.CurrentGameMode.GetPlayerSpeed();
+        lookSpeed = gameMode.CurrentGameMode.GetTurretSpeed();
+
+        hasBullets = gameMode.CurrentGameMode.GetPlayerHasBullets();
+        bulletSpeed = gameMode.CurrentGameMode.GetBulletSpeed();
+
+        hasNewScale = gameMode.CurrentGameMode.GetPlayerHasNewScale();
+        newScale = gameMode.CurrentGameMode.GetPlayerScale();
     }
 
     void Update()
@@ -79,6 +101,7 @@ public class PlayerController : MonoBehaviour
     void ShootTurret(bool canShoot)
     {
         var bulletEmission = bulletParticles.GetComponent<ParticleSystem>().emission;
+        bulletEmission.rateOverTime = bulletSpeed;
 
         if (canShoot)
         {
@@ -151,10 +174,9 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        fireInput = value.isPressed;
-
-        if (playerAlive)
+        if (playerAlive && hasBullets)
         {
+            fireInput = value.isPressed;
             ShootTurret(fireInput);
         }
     }

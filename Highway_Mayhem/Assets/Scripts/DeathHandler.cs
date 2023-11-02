@@ -12,7 +12,7 @@ public class DeathHandler : MonoBehaviour
    //Player scripts
    RotateWheels[] rotateWheels;
    //Scene script
-   SceneController sceneManager;
+   UIController UIscript;
    //variables
    bool isPlayerAlive = true;
    public bool IsPlayerAlive { get { return isPlayerAlive; } }
@@ -23,8 +23,8 @@ public class DeathHandler : MonoBehaviour
       StopObstacles();
       PlayerWheels(false);
 
-      sceneManager = FindObjectOfType<SceneController>();
-      sceneManager.EnableGameOverCanvas();
+      UIscript = FindObjectOfType<UIController>();
+      UIscript.EnableGameOverCanvas();
    }
 
    #region Obstacle Method

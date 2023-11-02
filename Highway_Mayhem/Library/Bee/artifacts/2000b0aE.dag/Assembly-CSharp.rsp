@@ -333,7 +333,8 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/DeathHandler.cs"
-"Assets/Scripts/GameSession.cs"
+"Assets/Scripts/GameModeController.cs"
+"Assets/Scripts/GameModeSO.cs"
 "Assets/Scripts/Obstacles/DespawnObject.cs"
 "Assets/Scripts/Obstacles/MoveOnHighway.cs"
 "Assets/Scripts/Obstacles/ObjectSpawner.cs"
@@ -343,7 +344,8 @@
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/RotateWheels.cs"
 "Assets/Scripts/RepeatHighway.cs"
-"Assets/Scripts/SceneController.cs"
+"Assets/Scripts/ScenePersist.cs"
+"Assets/Scripts/UIController.cs"
 -langversion:9.0
 
 /deterministic
