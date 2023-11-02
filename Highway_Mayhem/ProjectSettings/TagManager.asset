@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Obstacle
   - Car
+  - GameOverCanvas
+  - PauseMenuCanvas
+  - ControlsCanvas
+  - SettingsCanvas
   layers:
   - Default
   - TransparentFX

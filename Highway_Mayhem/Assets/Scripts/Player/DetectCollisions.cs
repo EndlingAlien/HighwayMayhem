@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
+    [Tooltip("Explosion attached to player")]
     [SerializeField] ParticleSystem explosion;
     DeathHandler deathHandler;
 
-    private void Start()
+    void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
     }
 
-    private void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Obstacle")
         {
-            //explosion.Play();
+            explosion.Play();
             Destroy(other.gameObject);
             deathHandler.ActivateGameOver();
-            //remove health
         }
         else if (other.gameObject.CompareTag("Car"))
         {
-            //explosion.Play();
+            explosion.Play();
+            Destroy(other.gameObject);
+            deathHandler.ActivateGameOver();
         }
     }
 

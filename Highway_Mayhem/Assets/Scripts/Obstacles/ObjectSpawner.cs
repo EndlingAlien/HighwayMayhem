@@ -4,36 +4,50 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
+    #region Variables
+    [Header("Prefabs")]
+    [Tooltip("All obstacle prefabs you want to instantiate")]
     [SerializeField] GameObject[] obstaclePrefabs;
+    [Tooltip("All car prefabs you want to instantiate")]
     [SerializeField] GameObject[] carPrefabs;
+    [Space(10)]
+
+    [Header("Spawn Config")]
+    [Tooltip("Spawn Points for above prefabs")]
     [SerializeField] Transform[] spawnPoint;
+    [Tooltip("How long inbetween prefab spawns")]
+    [SerializeField] float spawnDelay = 2f;
+    [Space(10)]
+
+    [Header("Prefab Parent")]
+    [Tooltip("Assign each prefab as a child to this Gameobject")]
     [SerializeField] Transform despawnObject;
 
-    [SerializeField] float spawnDelay = 2f;
-    bool playerAlive= true;
-
+    //Random Range Variables
     int laneRange;
     int objectRange;
     int obstacleRange;
     int carRange;
-
+    //bool variables
+    bool playerAlive = true;
+    //script variables
     Transform spawnTransform;
     DeathHandler deathHandler;
+    #endregion
 
-
-    private void Start()
+    void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
         StartCoroutine(RangeRandomizer());
     }
-    private void Update()
+
+    void Update()
     {
         playerAlive = deathHandler.IsPlayerAlive;
     }
 
     IEnumerator RangeRandomizer()
     {
-        //if player still alive, run 
         while (playerAlive)
         {
             objectRange = Random.Range(1, 3);
@@ -47,6 +61,7 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
+    #region Check Random Numbers
     void SpawnObject()
     {
         CheckLaneChoice();
@@ -57,7 +72,7 @@ public class ObjectSpawner : MonoBehaviour
         }
     }
 
-    private void CheckLaneChoice()
+    void CheckLaneChoice()
     {
         spawnTransform = spawnPoint[laneRange].GetComponent<Transform>();
     }
@@ -73,8 +88,10 @@ public class ObjectSpawner : MonoBehaviour
             SpawnCar();
         }
     }
+    #endregion
 
-    private void SpawnObstacle()
+    #region Spawn Methods
+    void SpawnObstacle()
     {
         GameObject prefabToSpawn = obstaclePrefabs[obstacleRange];
         GameObject newObstacle = Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
@@ -82,13 +99,13 @@ public class ObjectSpawner : MonoBehaviour
         newObstacle.transform.SetParent(despawnObject.transform);
     }
 
-    private void SpawnCar()
+    void SpawnCar()
     {
         GameObject prefabToSpawn = carPrefabs[carRange];
         GameObject newCar = Instantiate(prefabToSpawn, spawnTransform.position, spawnTransform.rotation);
 
         newCar.transform.SetParent(despawnObject.transform);
     }
-
+    #endregion
 
 }

@@ -4,26 +4,30 @@ using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
+   #region Variables
+   //Obstacle scripts
    RepeatHighway repeatHighway;
    DespawnObject despawnObject;
-
-   RotateWheels[] rotateWheels;
    MoveOnHighway moveOnHighway;
-
-   SceneLoader sceneManager;
-
+   //Player scripts
+   RotateWheels[] rotateWheels;
+   //Scene script
+   SceneController sceneManager;
+   //variables
    bool isPlayerAlive = true;
    public bool IsPlayerAlive { get { return isPlayerAlive; } }
 
+   #endregion
    public void ActivateGameOver()
    {
       StopObstacles();
-      DisablePlayerWheels();
-      
-      sceneManager = FindObjectOfType<SceneLoader>();
+      PlayerWheels(false);
+
+      sceneManager = FindObjectOfType<SceneController>();
       sceneManager.EnableGameOverCanvas();
    }
 
+   #region Obstacle Method
    void StopObstacles()
    {
       repeatHighway = FindObjectOfType<RepeatHighway>();
@@ -49,14 +53,15 @@ public class DeathHandler : MonoBehaviour
          }
       }
    }
+   #endregion
 
-   void DisablePlayerWheels()
+   public void PlayerWheels(bool value)
    {
       rotateWheels = FindObjectsOfType<RotateWheels>();
 
       foreach (RotateWheels wheel in rotateWheels)
       {
-         wheel.enabled = false;
+         wheel.enabled = value;
       }
    }
 

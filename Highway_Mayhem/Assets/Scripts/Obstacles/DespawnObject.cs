@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DespawnObject : MonoBehaviour
 {
-    [SerializeField] float killVector = -40f;
+    float killVector = -40f;
 
-    private void Update()
+    void Update()
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
         {

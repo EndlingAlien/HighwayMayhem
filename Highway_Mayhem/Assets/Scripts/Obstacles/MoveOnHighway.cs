@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MoveOnHighway : MonoBehaviour
 {
-    [SerializeField] float speed = 20;
-    // Update is called once per frame
+    float speed = 20;
+
     void Update()
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);

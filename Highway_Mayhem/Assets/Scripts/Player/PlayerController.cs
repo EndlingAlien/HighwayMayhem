@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //Known bugs:
-    // tank glitches out on border(slightly)
-    //when moving left to right, turret head slightly moves(not really bug)
     #region Variables
-
     [Header("Player Config")]
     [Tooltip("Turret gameobject refrence")]
     [SerializeField] Transform tankTurret;
@@ -46,7 +42,7 @@ public class PlayerController : MonoBehaviour
     bool playerAlive;
     #endregion
 
-    private void Start()
+    void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
     }
@@ -54,6 +50,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         playerAlive = deathHandler.IsPlayerAlive;
+
         if (playerAlive)
         {
             MoveTurret();
@@ -86,7 +83,6 @@ public class PlayerController : MonoBehaviour
         if (canShoot)
         {
             bulletEmission.enabled = true;
-            //PlayTurretFlash();
         }
         else if (!canShoot)
         {
@@ -108,17 +104,14 @@ public class PlayerController : MonoBehaviour
         if (movement.x < 0)
         {
             ProcessRotation(-10);
-            ProcessMovement();
         }
         else if (movement.x > 0)
         {
             ProcessRotation(10);
-            ProcessMovement();
         }
         else if (movement.x == 0)
         {
             ProcessRotation(0);
-            ProcessMovement();
         }
     }
 
@@ -133,14 +126,15 @@ public class PlayerController : MonoBehaviour
         float movementX = moveInput.x * playerSpeed * Time.deltaTime;
         float currentX = transform.position.x;
 
-        float newX = Mathf.Clamp(currentX + movementX, minX, maxX);
+        float newX = currentX + movementX;
 
-        Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
-
-        transform.position = newPosition;
+        if (newX >= minX && newX <= maxX)
+        {
+            Vector3 newPosition = new Vector3(newX, transform.position.y, transform.position.z);
+            transform.position = newPosition;
+        }
         return new Vector2(newX - currentX, 0);
     }
-
     #endregion
 
     #region Input methods
@@ -158,6 +152,7 @@ public class PlayerController : MonoBehaviour
     void OnFire(InputValue value)
     {
         fireInput = value.isPressed;
+
         if (playerAlive)
         {
             ShootTurret(fireInput);
