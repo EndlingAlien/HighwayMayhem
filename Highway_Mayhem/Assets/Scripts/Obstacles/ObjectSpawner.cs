@@ -1,10 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
     #region Variables
+
     [Header("Prefabs")]
     [Tooltip("All obstacle prefabs you want to instantiate")]
     [SerializeField] GameObject[] obstaclePrefabs;
@@ -21,19 +21,21 @@ public class ObjectSpawner : MonoBehaviour
     [Tooltip("Assign each prefab as a child to this Gameobject")]
     [SerializeField] Transform despawnObject;
 
-    //Random Range Variables
+    //Random Range
     int laneRange;
     int objectRange;
     int obstacleRange;
     int carRange;
-    //bool variables
-    bool playerAlive = true;
-    //script variables
+    //Spawn
     Transform spawnTransform;
+
+    //DeathHandler 
     DeathHandler deathHandler;
-    //GameMde Variables
+    bool playerAlive = true;
+    //GameMode
     float spawnDelay;
     GameModeController gameMode;
+
     #endregion
 
     void Start()
@@ -66,6 +68,7 @@ public class ObjectSpawner : MonoBehaviour
     }
 
     #region Check Random Numbers
+
     void SpawnObject()
     {
         CheckLaneChoice();
@@ -92,9 +95,11 @@ public class ObjectSpawner : MonoBehaviour
             SpawnCar();
         }
     }
+
     #endregion
 
     #region Spawn Methods
+
     void SpawnObstacle()
     {
         GameObject prefabToSpawn = obstaclePrefabs[obstacleRange];
@@ -110,6 +115,6 @@ public class ObjectSpawner : MonoBehaviour
 
         newCar.transform.SetParent(despawnObject.transform);
     }
-    #endregion
 
+    #endregion
 }

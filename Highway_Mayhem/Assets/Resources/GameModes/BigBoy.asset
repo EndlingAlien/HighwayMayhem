@@ -22,6 +22,6 @@ MonoBehaviour:
   playerHasNewScale: 1
   playerHasBullets: 0
   playerHealth: 0
-  playerScale: 2
+  playerScale: 3.5
   bulletSpeed: 0
   playerCanShoot: 0

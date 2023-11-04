@@ -1,22 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    #region Variables
+
+    [Header("Canvases")]
     [Tooltip("List of Canvases in Hierarchy")]
     [SerializeField] GameObject[] canvases;
+    [Space(10)]
+
+    [Header("Sliders")]
+    [SerializeField] Slider healthSlider;
+    [SerializeField] Slider cooldownSlider;
+
+    bool isGamePaused;
     GameObject desiredCanvas;
 
+    //Scripts
     DeathHandler deathHandler;
-    bool isGamePaused;
+    ScenePersist scenePersist;
+    GameModeController gameMode;
+
+    #endregion
 
     void Start()
     {
         isGamePaused = false;
+
         deathHandler = FindObjectOfType<DeathHandler>();
+        scenePersist = FindObjectOfType<ScenePersist>();
+        gameMode = FindObjectOfType<GameModeController>();
+
+        ConfigureHealthSlider();
+        ConfigureCooldownSlider();
     }
+
+    #region Sliders
+
+    void ConfigureHealthSlider()
+    {
+        if (gameMode.CurrentGameMode.GetPlayerHasHealth())
+        {
+            healthSlider.enabled = true;
+            healthSlider.maxValue = gameMode.CurrentGameMode.GetPlayerHealth();
+            healthSlider.value = gameMode.CurrentGameMode.GetPlayerHealth();
+        }
+        else
+        {
+            healthSlider.enabled = false;
+        }
+    }
+
+    void ConfigureCooldownSlider()
+    {
+        if (gameMode.CurrentGameMode.GetPlayerHasBullets())
+        {
+            cooldownSlider.enabled = true;
+            cooldownSlider.maxValue = gameMode.CurrentGameMode.GetCooldownAmount();
+            cooldownSlider.value = gameMode.CurrentGameMode.GetCooldownAmount();
+        }
+        else
+        {
+            cooldownSlider.enabled = false;
+        }
+    }
+
+    #endregion
 
     void Update()
     {
@@ -29,13 +80,16 @@ public class UIController : MonoBehaviour
             UnpauseGame();
         }
 
+        //debug key
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            scenePersist.ResetScenePersist();
             LoadCorrectScene(0);
         }
     }
 
     #region Pause Methods
+
     void PauseGame()
     {
         isGamePaused = true;
@@ -51,9 +105,25 @@ public class UIController : MonoBehaviour
         deathHandler.PlayerWheels(true);
         isGamePaused = false;
     }
+
+    #endregion
+
+    #region Display Sliders
+
+    public void DisplayHealthBar(float value)
+    {
+        healthSlider.value = value;
+    }
+
+    public void DisplayBulletCooldown(float value)
+    {
+        cooldownSlider.value = value;
+    }
+
     #endregion
 
     #region Canvas Methods
+
     public void EnableGameOverCanvas()
     {
         FindAndEnableCorrectCanvas("GameOverCanvas");
@@ -70,9 +140,11 @@ public class UIController : MonoBehaviour
             }
         }
     }
+
     #endregion
 
-    #region UI Methods
+    #region UI Only Methods
+
     public void Reload()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
@@ -107,5 +179,11 @@ public class UIController : MonoBehaviour
         Application.Quit();
         Debug.Log("Closing Application");
     }
+
+    public void ResetScenePersist()
+    {
+        scenePersist.ResetScenePersist();
+    }
+
     #endregion
 }

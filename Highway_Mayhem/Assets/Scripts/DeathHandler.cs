@@ -1,23 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
    #region Variables
+
+   bool isPlayerAlive = true;
+   public bool IsPlayerAlive { get { return isPlayerAlive; } }
+
    //Obstacle scripts
    RepeatHighway repeatHighway;
    DespawnObject despawnObject;
    MoveOnHighway moveOnHighway;
+
    //Player scripts
    RotateWheels[] rotateWheels;
-   //Scene script
+
+   //UI scripts
    UIController UIscript;
-   //variables
-   bool isPlayerAlive = true;
-   public bool IsPlayerAlive { get { return isPlayerAlive; } }
 
    #endregion
+
    public void ActivateGameOver()
    {
       StopObstacles();
@@ -28,6 +30,7 @@ public class DeathHandler : MonoBehaviour
    }
 
    #region Obstacle Method
+
    void StopObstacles()
    {
       repeatHighway = FindObjectOfType<RepeatHighway>();
@@ -53,6 +56,7 @@ public class DeathHandler : MonoBehaviour
          }
       }
    }
+
    #endregion
 
    public void PlayerWheels(bool value)
@@ -64,5 +68,4 @@ public class DeathHandler : MonoBehaviour
          wheel.enabled = value;
       }
    }
-
 }

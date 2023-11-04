@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
-    //when player scale is defferent than default, offset is messed up
     PlayerController player;
     Vector3 offset = new Vector3(0, 8, -10);
     Vector3 rotation = new Vector3(30, 0, 0);
@@ -16,6 +13,7 @@ public class FollowPlayer : MonoBehaviour
 
     void LateUpdate()
     {
-        transform.SetPositionAndRotation(player.transform.position + offset, Quaternion.Euler(rotation));
+        Vector3 scaledOffset = new Vector3(offset.x * player.transform.localScale.x, offset.y * player.transform.localScale.y, offset.z * player.transform.localScale.z);
+        transform.SetPositionAndRotation(player.transform.position + scaledOffset, Quaternion.Euler(rotation));
     }
 }

@@ -1,22 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DetectCollisions : MonoBehaviour
 {
+    #region Variables
+
     [Tooltip("Explosion attached to player")]
     [SerializeField] ParticleSystem explosion;
 
+    //Scripts
     DeathHandler deathHandler;
-    //GameMode variables
+    UIController uiScript;
+
+    //GameMode
     GameModeController gameMode;
-    float playerHealth;
     bool hasHealth;
+    float playerHealth;
+    public float PlayerHealth { get { return playerHealth; } }
+
+    #endregion
 
     void Start()
     {
         deathHandler = FindObjectOfType<DeathHandler>();
+        uiScript = FindObjectOfType<UIController>();
         gameMode = FindObjectOfType<GameModeController>();
+
         hasHealth = gameMode.CurrentGameMode.GetPlayerHasHealth();
 
         if (hasHealth)
@@ -33,29 +41,20 @@ public class DetectCollisions : MonoBehaviour
             Destroy(other.gameObject);
             if (hasHealth)
             {
-                playerHealth--;
-                if (playerHealth <= 0)
-                {
-                    deathHandler.ActivateGameOver();
-                }
+                ProcessHealth("Obstacle");
             }
             else
             {
                 deathHandler.ActivateGameOver();
             }
         }
-
         else if (other.gameObject.CompareTag("Car"))
         {
             explosion.Play();
             Destroy(other.gameObject);
             if (hasHealth)
             {
-                playerHealth -= 2;
-                if (playerHealth <= 0)
-                {
-                    deathHandler.ActivateGameOver();
-                }
+                ProcessHealth("Car");
             }
             else
             {
@@ -64,4 +63,25 @@ public class DetectCollisions : MonoBehaviour
         }
     }
 
+    void ProcessHealth(string enemy)
+    {
+        if (enemy == "Obstacle")
+        {
+            playerHealth--;
+            uiScript.DisplayHealthBar(playerHealth);
+            if (playerHealth <= 0)
+            {
+                deathHandler.ActivateGameOver();
+            }
+        }
+        else if (enemy == "Car")
+        {
+            playerHealth -= 2;
+            uiScript.DisplayHealthBar(playerHealth);
+            if (playerHealth <= 0)
+            {
+                deathHandler.ActivateGameOver();
+            }
+        }
+    }
 }

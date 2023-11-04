@@ -24,4 +24,6 @@ MonoBehaviour:
   playerHealth: 12
   playerScale: 1.5
   bulletSpeed: 10
+  cooldownAmount: 10
+  cooldownDelay: 10
   playerCanShoot: 3

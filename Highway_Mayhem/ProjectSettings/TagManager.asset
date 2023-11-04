@@ -10,6 +10,7 @@ TagManager:
   - PauseMenuCanvas
   - ControlsCanvas
   - SettingsCanvas
+  - GameCanvas
   layers:
   - Default
   - TransparentFX

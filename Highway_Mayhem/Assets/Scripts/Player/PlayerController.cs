@@ -1,11 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
+using Quaternion = UnityEngine.Quaternion;
 
 public class PlayerController : MonoBehaviour
 {
     #region Variables
+
     [Header("Player Config")]
     [Tooltip("Turret gameobject refrence")]
     [SerializeField] Transform tankTurret;
@@ -13,28 +16,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem bulletParticles;
     [Tooltip("Particle system for the muzzle flash on turret")]
     [SerializeField] ParticleSystem turretFlash;
-    [Space(10)]
 
-    [Header("Rotation Variable")]
-    [Tooltip("Speed of tank rotation when on x-axis")]
-    [SerializeField] float rotationFactor = 2.5f;
-
-    //Turret Rotation clamp
-    float currentRotation;
-    float minRot = -40;
-    float maxRot = 40;
-    //X-Axis Movement Clamp
-    float minX = -8.0f;
-    float maxX = 23.0f;
-    //input variables
-    Vector2 moveInput;
-    Vector2 lookInput;
-    bool fireInput;
-    //Death Handler variables
-    DeathHandler deathHandler;
-    bool playerAlive;
-
-    //Gamemode vars
+    //Gamemode
     GameModeController gameMode;
     float playerSpeed;
     float lookSpeed;
@@ -42,20 +25,50 @@ public class PlayerController : MonoBehaviour
     float bulletSpeed;
     bool hasNewScale;
     float newScale;
+
+    //Death Handler
+    DeathHandler deathHandler;
+    bool playerAlive;
+
+    //Cooldown
+    UIController uiScript;
+    bool hasCooldown;
+    float cooldownTime;
+    float cooldownDelay = 5f;
+
+    //Turret Rotation
+    float currentRotation;
+    float minRot = -40;
+    float maxRot = 40;
+
+    //Tank Movement
+    float minX = -8.0f;
+    float maxX = 23.0f;
+    float rotationFactor = 2.5f;
+
+    //Input
+    Vector2 moveInput;
+    Vector2 lookInput;
+    bool isFiring;
+    float fireInput;
+
     #endregion
 
     void Start()
     {
+        hasCooldown = false;
+
         deathHandler = FindObjectOfType<DeathHandler>();
         gameMode = FindObjectOfType<GameModeController>();
+        uiScript = FindObjectOfType<UIController>();
+
         ConfigureGameModeVariables();
+        CheckIfNewScale();
 
-        if (hasNewScale)
-        {
-            transform.localScale = new Vector3(newScale, newScale, newScale);
-        }
-
+        uiScript.DisplayBulletCooldown(cooldownTime);
     }
+
+    #region GameMode Config Methods
 
     void ConfigureGameModeVariables()
     {
@@ -64,28 +77,85 @@ public class PlayerController : MonoBehaviour
 
         hasBullets = gameMode.CurrentGameMode.GetPlayerHasBullets();
         bulletSpeed = gameMode.CurrentGameMode.GetBulletSpeed();
+        cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
+        cooldownDelay = gameMode.CurrentGameMode.GetCooldownDelay();
 
         hasNewScale = gameMode.CurrentGameMode.GetPlayerHasNewScale();
         newScale = gameMode.CurrentGameMode.GetPlayerScale();
     }
 
+    void CheckIfNewScale()
+    {
+        if (hasNewScale && gameMode.CurrentGameMode.GetName() == "TinyToMighty")
+        {
+            transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        }
+        else if (hasNewScale)
+        {
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+        }
+    }
+
+    void TinyToMightyScale()
+    {
+        Vector3 startScale = transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        Vector3 finishScale = transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
+        float shrinkSpeed = 0.01f;
+
+        Vector3 growScale = Vector3.Lerp(startScale, finishScale, Time.time * shrinkSpeed);
+
+        transform.localScale = growScale;
+    }
+
+    #endregion
+
     void Update()
     {
         playerAlive = deathHandler.IsPlayerAlive;
 
-        if (playerAlive)
+        if (gameMode.CurrentGameMode.GetName() == "TinyToMighty")
         {
-            MoveTurret();
-            MoveTank();
+            TinyToMightyScale();
+        }
 
-            if (fireInput)
+        if (hasBullets)
+        {
+            ProcessShootingAndCooldown();
+
+            if (cooldownTime <= 0)
             {
-                PlayTurretFlash();
+                StartCoroutine(BulletCooldown());
             }
         }
     }
 
     #region Turret Control Methods
+
+    void ProcessShootingAndCooldown()
+    {
+        if (playerAlive)
+        {
+            MoveTurret();
+            MoveTank();
+            ShootTurret();
+
+            if (isFiring && !hasCooldown)
+            {
+                PlayTurretFlash();
+                cooldownTime -= Time.deltaTime;
+                uiScript.DisplayBulletCooldown(cooldownTime);
+            }
+            else
+            {
+                if (cooldownTime != gameMode.CurrentGameMode.GetCooldownAmount())
+                {
+                    cooldownTime += Time.deltaTime;
+                    uiScript.DisplayBulletCooldown(cooldownTime);
+                }
+            }
+        }
+    }
+
     void MoveTurret()
     {
         float newRotation = currentRotation + lookInput.x * lookSpeed * Time.deltaTime;
@@ -98,16 +168,16 @@ public class PlayerController : MonoBehaviour
         tankTurret.transform.rotation = Quaternion.Euler(0, rot, 0);
     }
 
-    void ShootTurret(bool canShoot)
+    void ShootTurret()
     {
         var bulletEmission = bulletParticles.GetComponent<ParticleSystem>().emission;
         bulletEmission.rateOverTime = bulletSpeed;
 
-        if (canShoot)
+        if (isFiring && !hasCooldown)
         {
             bulletEmission.enabled = true;
         }
-        else if (!canShoot)
+        else if (!isFiring)
         {
             bulletEmission.enabled = false;
         }
@@ -117,9 +187,22 @@ public class PlayerController : MonoBehaviour
     {
         turretFlash.Play();
     }
+
+    IEnumerator BulletCooldown()
+    {
+        hasCooldown = true;
+        fireInput = 0;
+        isFiring = false;
+        yield return new WaitForSeconds(cooldownDelay);
+        hasCooldown = false;
+        cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
+        uiScript.DisplayBulletCooldown(cooldownTime);
+    }
+
     #endregion
 
     #region Tank Control Methods
+
     void MoveTank()
     {
         Vector2 movement = ProcessMovement();
@@ -138,12 +221,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ProcessRotation(float rotation)
-    {
-        Quaternion targetRotation = Quaternion.Euler(0, rotation, 0);
-        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRotation, rotationFactor);
-    }
-
     Vector2 ProcessMovement()
     {
         float movementX = moveInput.x * playerSpeed * Time.deltaTime;
@@ -158,6 +235,13 @@ public class PlayerController : MonoBehaviour
         }
         return new Vector2(newX - currentX, 0);
     }
+
+    void ProcessRotation(float rotation)
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, rotation, 0);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRotation, rotationFactor);
+    }
+
     #endregion
 
     #region Input methods
@@ -174,12 +258,25 @@ public class PlayerController : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        if (playerAlive && hasBullets)
+        fireInput = value.Get<float>();
+
+        if (!hasCooldown)
         {
-            fireInput = value.isPressed;
-            ShootTurret(fireInput);
+            if (fireInput == 1)
+            {
+                isFiring = true;
+            }
+            else if (fireInput == 0)
+            {
+                isFiring = false;
+            }
+        }
+        else
+        {
+            fireInput = 0;
+            isFiring = false;
         }
     }
-    #endregion
 
+    #endregion
 }

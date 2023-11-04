@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveOnHighway : MonoBehaviour
 {
     float speed;
     GameModeController gameMode;
+
     void Start()
     {
         gameMode = FindObjectOfType<GameModeController>();
