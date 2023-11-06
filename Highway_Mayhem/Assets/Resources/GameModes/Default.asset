@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   gamemodeName: Default
-  highwaySpeed: 0
-  obstacleSpeed: 0
-  obstacleSpawnDelay: 0
-  playerSpeed: 0
-  turretSpeed: 0
+  highwaySpeed: 20
+  obstacleSpeed: 20
+  obstacleSpawnDelay: 1
+  playerSpeed: 10
+  turretSpeed: 30
   playerHasHealth: 0
   playerHasNewScale: 0
-  playerHasBullets: 0
+  playerHasBullets: 1
   playerHealth: 0
   playerScale: 0
-  bulletSpeed: 0
-  playerCanShoot: 0
+  bulletSpeed: 4
+  cooldownAmount: 6
+  cooldownDelay: 6
+  playerCanShoot: 1

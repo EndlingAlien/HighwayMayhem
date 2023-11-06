@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
+   //known bug:
+   //particle Bullets continue shooting if player presses key
    #region Variables
 
    bool isPlayerAlive = true;
@@ -11,6 +13,7 @@ public class DeathHandler : MonoBehaviour
    RepeatHighway repeatHighway;
    DespawnObject despawnObject;
    MoveOnHighway moveOnHighway;
+   PlayerController playerController;
 
    //Player scripts
    RotateWheels[] rotateWheels;
@@ -24,6 +27,7 @@ public class DeathHandler : MonoBehaviour
    {
       StopObstacles();
       PlayerWheels(false);
+      PlayerBullets();
 
       UIscript = FindObjectOfType<UIController>();
       UIscript.EnableGameOverCanvas();
@@ -67,5 +71,11 @@ public class DeathHandler : MonoBehaviour
       {
          wheel.enabled = value;
       }
+   }
+
+   public void PlayerBullets()
+   {
+      playerController = FindObjectOfType<PlayerController>();
+      playerController.StopAllBullets();
    }
 }

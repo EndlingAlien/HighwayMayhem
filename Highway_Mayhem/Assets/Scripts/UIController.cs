@@ -12,8 +12,10 @@ public class UIController : MonoBehaviour
     [Space(10)]
 
     [Header("Sliders")]
-    [SerializeField] Slider healthSlider;
-    [SerializeField] Slider cooldownSlider;
+    [SerializeField] GameObject healthSliderObject;
+    [SerializeField] GameObject cooldownSliderObject;
+    Slider healthSlider;
+    Slider cooldownSlider;
 
     bool isGamePaused;
     GameObject desiredCanvas;
@@ -29,6 +31,9 @@ public class UIController : MonoBehaviour
     {
         isGamePaused = false;
 
+        healthSlider = healthSliderObject.GetComponent<Slider>();
+        cooldownSlider = cooldownSliderObject.GetComponent<Slider>();
+
         deathHandler = FindObjectOfType<DeathHandler>();
         scenePersist = FindObjectOfType<ScenePersist>();
         gameMode = FindObjectOfType<GameModeController>();
@@ -43,13 +48,13 @@ public class UIController : MonoBehaviour
     {
         if (gameMode.CurrentGameMode.GetPlayerHasHealth())
         {
-            healthSlider.enabled = true;
+            healthSliderObject.SetActive(true);
             healthSlider.maxValue = gameMode.CurrentGameMode.GetPlayerHealth();
             healthSlider.value = gameMode.CurrentGameMode.GetPlayerHealth();
         }
         else
         {
-            healthSlider.enabled = false;
+            healthSliderObject.SetActive(false);
         }
     }
 
@@ -57,13 +62,13 @@ public class UIController : MonoBehaviour
     {
         if (gameMode.CurrentGameMode.GetPlayerHasBullets())
         {
-            cooldownSlider.enabled = true;
+            cooldownSliderObject.SetActive(true);
             cooldownSlider.maxValue = gameMode.CurrentGameMode.GetCooldownAmount();
             cooldownSlider.value = gameMode.CurrentGameMode.GetCooldownAmount();
         }
         else
         {
-            cooldownSlider.enabled = false;
+            cooldownSliderObject.SetActive(false);
         }
     }
 

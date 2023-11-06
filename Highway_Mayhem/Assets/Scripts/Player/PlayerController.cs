@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour
     bool hasNewScale;
     float newScale;
 
+    float startTime;
+    bool hasStartedScaling;
+
     //Death Handler
     DeathHandler deathHandler;
     bool playerAlive;
@@ -66,6 +69,9 @@ public class PlayerController : MonoBehaviour
         CheckIfNewScale();
 
         uiScript.DisplayBulletCooldown(cooldownTime);
+
+        startTime = Time.time;
+        hasStartedScaling = false;
     }
 
     #region GameMode Config Methods
@@ -89,6 +95,7 @@ public class PlayerController : MonoBehaviour
         if (hasNewScale && gameMode.CurrentGameMode.GetName() == "TinyToMighty")
         {
             transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+            hasStartedScaling = true;
         }
         else if (hasNewScale)
         {
@@ -98,13 +105,24 @@ public class PlayerController : MonoBehaviour
 
     void TinyToMightyScale()
     {
-        Vector3 startScale = transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-        Vector3 finishScale = transform.localScale = new Vector3(3.5f, 3.5f, 3.5f);
-        float shrinkSpeed = 0.01f;
+        Vector3 startScale = new Vector3(0.4f, 0.4f, 0.4f);
+        Vector3 finishScale = new Vector3(3.5f, 3.5f, 3.5f);
+        float scaleDuration = 240; // Adjust this value as needed.
 
-        Vector3 growScale = Vector3.Lerp(startScale, finishScale, Time.time * shrinkSpeed);
+        // Calculate the time since the scene started and control the scaling accordingly.
+        float elapsedTime = Time.time - startTime;
 
-        transform.localScale = growScale;
+        if (elapsedTime < scaleDuration)
+        {
+            float t = elapsedTime / scaleDuration;
+            Vector3 growScale = Vector3.Lerp(startScale, finishScale, t);
+            transform.localScale = growScale;
+        }
+        else
+        {
+            // Ensure the scaling is finished by setting it to the final scale.
+            transform.localScale = finishScale;
+        }
     }
 
     #endregion
@@ -113,18 +131,22 @@ public class PlayerController : MonoBehaviour
     {
         playerAlive = deathHandler.IsPlayerAlive;
 
-        if (gameMode.CurrentGameMode.GetName() == "TinyToMighty")
+        if (playerAlive)
         {
-            TinyToMightyScale();
-        }
-
-        if (hasBullets)
-        {
-            ProcessShootingAndCooldown();
-
-            if (cooldownTime <= 0)
+            MoveTank();
+            if (gameMode.CurrentGameMode.GetName() == "TinyToMighty")
             {
-                StartCoroutine(BulletCooldown());
+                TinyToMightyScale();
+            }
+
+            if (hasBullets)
+            {
+                ProcessShootingAndCooldown();
+
+                if (cooldownTime <= 0)
+                {
+                    StartCoroutine(BulletCooldown());
+                }
             }
         }
     }
@@ -133,25 +155,21 @@ public class PlayerController : MonoBehaviour
 
     void ProcessShootingAndCooldown()
     {
-        if (playerAlive)
-        {
-            MoveTurret();
-            MoveTank();
-            ShootTurret();
+        MoveTurret();
+        ShootTurret();
 
-            if (isFiring && !hasCooldown)
+        if (isFiring && !hasCooldown)
+        {
+            PlayTurretFlash();
+            cooldownTime -= Time.deltaTime;
+            uiScript.DisplayBulletCooldown(cooldownTime);
+        }
+        else
+        {
+            if (cooldownTime != gameMode.CurrentGameMode.GetCooldownAmount())
             {
-                PlayTurretFlash();
-                cooldownTime -= Time.deltaTime;
+                cooldownTime += Time.deltaTime;
                 uiScript.DisplayBulletCooldown(cooldownTime);
-            }
-            else
-            {
-                if (cooldownTime != gameMode.CurrentGameMode.GetCooldownAmount())
-                {
-                    cooldownTime += Time.deltaTime;
-                    uiScript.DisplayBulletCooldown(cooldownTime);
-                }
             }
         }
     }
@@ -197,6 +215,14 @@ public class PlayerController : MonoBehaviour
         hasCooldown = false;
         cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
         uiScript.DisplayBulletCooldown(cooldownTime);
+    }
+
+    public void StopAllBullets()
+    {
+        fireInput = 0;
+        isFiring = false;
+        bulletSpeed = 0;
+        bulletParticles.Stop();
     }
 
     #endregion

@@ -335,9 +335,6 @@ MonoBehaviour:
   tankTurret: {fileID: 1662302103481390850}
   bulletParticles: {fileID: 6807202561613914830}
   turretFlash: {fileID: 1159880079723083855}
-  playerSpeed: 8.5
-  lookSpeed: 32
-  rotationFactor: 2.5
 --- !u!114 &880356810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +819,10 @@ PrefabInstance:
     - target: {fileID: 934448074458611844, guid: 9ebdca679697e42d6a3d41afff219b1f, type: 3}
       propertyPath: m_Name
       value: Bullets
+      objectReference: {fileID: 0}
+    - target: {fileID: 934448074458611844, guid: 9ebdca679697e42d6a3d41afff219b1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1237592730007057336, guid: 9ebdca679697e42d6a3d41afff219b1f, type: 3}
       propertyPath: m_RootOrder

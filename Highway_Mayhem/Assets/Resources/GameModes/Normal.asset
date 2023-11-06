@@ -15,7 +15,7 @@ MonoBehaviour:
   gamemodeName: Normal
   highwaySpeed: 20
   obstacleSpeed: 20
-  obstacleSpawnDelay: 1.5
+  obstacleSpawnDelay: 1
   playerSpeed: 10
   turretSpeed: 30
   playerHasHealth: 0
@@ -24,4 +24,6 @@ MonoBehaviour:
   playerHealth: 0
   playerScale: 0
   bulletSpeed: 4
+  cooldownAmount: 6
+  cooldownDelay: 6
   playerCanShoot: 1

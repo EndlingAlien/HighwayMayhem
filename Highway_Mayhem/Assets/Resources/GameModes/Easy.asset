@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   gamemodeName: Easy
-  highwaySpeed: 20
-  obstacleSpeed: 20
-  obstacleSpawnDelay: 2.5
+  highwaySpeed: 15
+  obstacleSpeed: 15
+  obstacleSpawnDelay: 1.8
   playerSpeed: 10
-  turretSpeed: 20
+  turretSpeed: 30
   playerHasHealth: 0
   playerHasNewScale: 0
-  playerHasBullets: 0
+  playerHasBullets: 1
   playerHealth: 0
   playerScale: 0
-  bulletSpeed: 0
-  playerCanShoot: 0
+  bulletSpeed: 5.5
+  cooldownAmount: 10
+  cooldownDelay: 10
+  playerCanShoot: 1

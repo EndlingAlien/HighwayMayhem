@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
@@ -26,12 +27,19 @@ public class ObjectSpawner : MonoBehaviour
     int objectRange;
     int obstacleRange;
     int carRange;
+
+    //Lane Randomize
+    private Queue<int> laneHistory = new Queue<int>();
+    private int maxHistoryLength = 5;
+    private int previousLane = -1;
+
     //Spawn
     Transform spawnTransform;
 
     //DeathHandler 
     DeathHandler deathHandler;
     bool playerAlive = true;
+
     //GameMode
     float spawnDelay;
     GameModeController gameMode;
@@ -81,6 +89,34 @@ public class ObjectSpawner : MonoBehaviour
 
     void CheckLaneChoice()
     {
+        int maxAttempts = 4;
+        int currentAttempt = 0;
+
+        do
+        {
+            laneRange = Random.Range(0, 4);
+
+            if (laneRange != previousLane)
+            {
+                if (!laneHistory.Contains(laneRange))
+                {
+                    laneHistory.Enqueue(laneRange);
+                    if (laneHistory.Count > maxHistoryLength)
+                    {
+                        laneHistory.Dequeue();
+                    }
+                    previousLane = laneRange;
+                    break;
+                }
+            }
+            currentAttempt++;
+        }
+        while (currentAttempt < maxAttempts);
+        if (currentAttempt >= maxAttempts)
+        {
+            laneHistory.Clear();
+            previousLane = -1;
+        }
         spawnTransform = spawnPoint[laneRange].GetComponent<Transform>();
     }
 

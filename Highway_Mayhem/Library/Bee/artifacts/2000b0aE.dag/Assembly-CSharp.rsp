@@ -333,6 +333,7 @@
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/DeathHandler.cs"
+"Assets/Scripts/DeleteParticle.cs"
 "Assets/Scripts/GameModeController.cs"
 "Assets/Scripts/GameModeSO.cs"
 "Assets/Scripts/Obstacles/DespawnObject.cs"

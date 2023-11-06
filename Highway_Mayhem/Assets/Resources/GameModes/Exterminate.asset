@@ -15,15 +15,15 @@ MonoBehaviour:
   gamemodeName: Exterminate
   highwaySpeed: 25
   obstacleSpeed: 25
-  obstacleSpawnDelay: 1
+  obstacleSpawnDelay: 0.7
   playerSpeed: 15
-  turretSpeed: 25
+  turretSpeed: 30
   playerHasHealth: 1
   playerHasNewScale: 1
   playerHasBullets: 1
-  playerHealth: 12
+  playerHealth: 15
   playerScale: 1.5
-  bulletSpeed: 10
-  cooldownAmount: 10
-  cooldownDelay: 10
+  bulletSpeed: 7
+  cooldownAmount: 6
+  cooldownDelay: 6
   playerCanShoot: 3
