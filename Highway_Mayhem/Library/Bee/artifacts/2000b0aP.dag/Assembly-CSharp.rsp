@@ -83,6 +83,7 @@
 -define:ENABLE_TERRAIN
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
+-define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
 -define:CSHARP_7_OR_LATER
@@ -148,6 +149,7 @@
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.VFXModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.VideoModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.VRModule.dll"
+-r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WebGLModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.WindModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.XRModule.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netfx/mscorlib.dll"
@@ -272,8 +274,9 @@
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/NetStandard/compat/2.1.0/shims/netstandard/System.Xml.XPath.XDocument.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/NetStandard/Extensions/2.0.0/System.Runtime.InteropServices.WindowsRuntime.dll"
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/NetStandard/ref/2.1.0/netstandard.dll"
--r:"/Users/sa/CreateWithCode_ Projects/Prototype 1/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
--r:"/Users/sa/CreateWithCode_ Projects/Prototype 1/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
+-r:"/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/2000b0aP.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Services.Core.Analytics.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Services.Core.Environments.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Services.Core.ref.dll"
@@ -283,15 +286,23 @@
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.VisualScripting.Flow.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/UnityEngine.UI.ref.dll"
-"Assets/Challenge 1/Scripts/FollowPlayerX.cs"
-"Assets/Challenge 1/Scripts/PlayerControllerX.cs"
-"Assets/Challenge 1/Scripts/SpinPropeller.cs"
-"Assets/Scripts/DrivingCars.cs"
-"Assets/Scripts/FirstPersonFollow.cs"
-"Assets/Scripts/FollowPlayer.cs"
-"Assets/Scripts/PlayerController.cs"
-"Assets/Scripts/SwitchCam.cs"
-"Assets/Scripts/WheelRotation.cs"
+"Assets/Scripts/DeathHandler.cs"
+"Assets/Scripts/Game Maintenance/GameModeController.cs"
+"Assets/Scripts/Game Maintenance/GameModeSO.cs"
+"Assets/Scripts/Game Maintenance/ModePersist.cs"
+"Assets/Scripts/Game Maintenance/SavedData.cs"
+"Assets/Scripts/Obstacles/DeleteParticle.cs"
+"Assets/Scripts/Obstacles/DespawnObject.cs"
+"Assets/Scripts/Obstacles/MoveOnHighway.cs"
+"Assets/Scripts/Obstacles/ObjectSpawner.cs"
+"Assets/Scripts/Player/DetectBullets.cs"
+"Assets/Scripts/Player/DetectCollisions.cs"
+"Assets/Scripts/Player/FollowPlayer.cs"
+"Assets/Scripts/Player/PlayerController.cs"
+"Assets/Scripts/Player/RotateWheels.cs"
+"Assets/Scripts/RepeatHighway.cs"
+"Assets/Scripts/ScoreKeeper.cs"
+"Assets/Scripts/UIController.cs"
 -langversion:9.0
 
 /deterministic

@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   gamemodeName: Hard
-  highwaySpeed: 35
-  obstacleSpeed: 35
-  obstacleSpawnDelay: 0.5
-  playerSpeed: 15
+  highwaySpeed: 30
+  obstacleSpeed: 30
+  obstacleSpawnDelay: 0.8
+  playerSpeed: 13
   turretSpeed: 35
   playerHasHealth: 0
   playerHasNewScale: 0
   playerHasBullets: 1
   playerHealth: 0
   playerScale: 0
-  bulletSpeed: 6
-  cooldownAmount: 4
-  cooldownDelay: 4
+  bulletSpeed: 5
+  cooldownAmount: 4.5
+  cooldownDelay: 4.5
   playerCanShoot: 1

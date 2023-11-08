@@ -1,0 +1,39 @@
+<linker>
+	<assembly fullname="Assembly-CSharp" ignoreIfMissing="1">
+		<type fullname="ModePersist">
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+			<method name="SetGameMode"/>
+		</type>
+		<type fullname="UIController">
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="LoadCorrectScene"/>
+			<method name="OpenControls"/>
+			<method name="OpenSettings"/>
+			<method name="Reload"/>
+			<method name="ResetScenePersist"/>
+			<method name="ReturnToPauseCanvas"/>
+			<method name="ReturnToPauseCanvas"/>
+		</type>
+	</assembly>
+</linker>

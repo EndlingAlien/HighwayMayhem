@@ -16,8 +16,8 @@ MonoBehaviour:
   highwaySpeed: 15
   obstacleSpeed: 15
   obstacleSpawnDelay: 1.8
-  playerSpeed: 10
-  turretSpeed: 30
+  playerSpeed: 8
+  turretSpeed: 25
   playerHasHealth: 0
   playerHasNewScale: 0
   playerHasBullets: 1

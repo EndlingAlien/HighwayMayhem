@@ -12,18 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3202d7aa5baf44722bfce8875980b3b0, type: 3}
   m_Name: Trippy
   m_EditorClassIdentifier: 
-  gamemodeName: 
-  highwaySpeed: 0
-  obstacleSpeed: 0
-  obstacleSpawnDelay: 0
-  playerSpeed: 0
-  turretSpeed: 0
+  gamemodeName: Trippy
+  requiredPoints: 0
+  requiredMode: 
+  isGameModeUnlocked: 0
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
+  highwaySpeed: 20
+  obstacleSpeed: 20
+  obstacleSpawnDelay: 1
+  playerSpeed: 10
+  turretSpeed: 30
   playerHasHealth: 0
   playerHasNewScale: 0
-  playerHasBullets: 0
+  playerHasBullets: 1
   playerHealth: 0
   playerScale: 0
-  bulletSpeed: 0
-  cooldownAmount: 0
-  cooldownDelay: 0
-  playerCanShoot: 0
+  bulletSpeed: 4.5
+  cooldownAmount: 6
+  cooldownDelay: 6
+  playerCanShoot: 3

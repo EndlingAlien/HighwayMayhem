@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
-   //known bug:
-   //particle Bullets continue shooting if player presses key
    #region Variables
 
    bool isPlayerAlive = true;
@@ -15,11 +13,12 @@ public class DeathHandler : MonoBehaviour
    MoveOnHighway moveOnHighway;
    PlayerController playerController;
 
-   //Player scripts
+   //Scripts
    RotateWheels[] rotateWheels;
-
-   //UI scripts
    UIController UIscript;
+   SavedData savedData;
+   GameModeController gameMode;
+   ScoreKeeper scoreKeeper;
 
    #endregion
 
@@ -28,6 +27,7 @@ public class DeathHandler : MonoBehaviour
       StopObstacles();
       PlayerWheels(false);
       PlayerBullets();
+      ProcessPlayerScore();
 
       UIscript = FindObjectOfType<UIController>();
       UIscript.EnableGameOverCanvas();
@@ -73,9 +73,19 @@ public class DeathHandler : MonoBehaviour
       }
    }
 
-   public void PlayerBullets()
+   void PlayerBullets()
    {
       playerController = FindObjectOfType<PlayerController>();
       playerController.StopAllBullets();
+   }
+
+   void ProcessPlayerScore()
+   {
+      scoreKeeper = FindObjectOfType<ScoreKeeper>();
+      gameMode = FindObjectOfType<GameModeController>();
+      savedData = FindObjectOfType<SavedData>();
+
+      Debug.Log("Checking score for, GameMode: " + gameMode.CurrentGameMode.GetName() + " with a score of: " + scoreKeeper.Points());
+      savedData.CheckAndSetHighscore(gameMode.CurrentGameMode.GetName(), scoreKeeper.Points());
    }
 }

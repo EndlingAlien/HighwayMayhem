@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: Achilles
   m_EditorClassIdentifier: 
   gamemodeName: Achilles
-  highwaySpeed: 0
-  obstacleSpeed: 0
-  obstacleSpawnDelay: 0
-  playerSpeed: 0
-  turretSpeed: 0
+  requiredPoints: 0
+  requiredMode: Hard
+  isGameModeUnlocked: 0
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
+  highwaySpeed: 35
+  obstacleSpeed: 35
+  obstacleSpawnDelay: 0.6
+  playerSpeed: 15
+  turretSpeed: 35
   playerHasHealth: 0
   playerHasNewScale: 0
-  playerHasBullets: 0
+  playerHasBullets: 1
   playerHealth: 0
   playerScale: 0
-  bulletSpeed: 0
-  cooldownAmount: 0
-  cooldownDelay: 0
-  playerCanShoot: 0
+  bulletSpeed: 7
+  cooldownAmount: 5
+  cooldownDelay: 5
+  playerCanShoot: 3

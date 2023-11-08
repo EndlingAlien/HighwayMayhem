@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TinyToMighty
   m_EditorClassIdentifier: 
   gamemodeName: TinyToMighty
-  highwaySpeed: 0
-  obstacleSpeed: 0
-  obstacleSpawnDelay: 0
+  highwaySpeed: 25
+  obstacleSpeed: 25
+  obstacleSpawnDelay: 0.8
   playerSpeed: 15
   turretSpeed: 0
   playerHasHealth: 0
@@ -24,4 +24,6 @@ MonoBehaviour:
   playerHealth: 0
   playerScale: 0
   bulletSpeed: 0
+  cooldownAmount: 0
+  cooldownDelay: 0
   playerCanShoot: 0

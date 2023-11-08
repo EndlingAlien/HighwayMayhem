@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: Exterminate
   m_EditorClassIdentifier: 
   gamemodeName: Exterminate
-  highwaySpeed: 25
-  obstacleSpeed: 25
-  obstacleSpawnDelay: 0.7
+  requiredPoints: 0
+  requiredMode: 
+  isGameModeUnlocked: 0
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
+  highwaySpeed: 30
+  obstacleSpeed: 30
+  obstacleSpawnDelay: 0.6
   playerSpeed: 15
-  turretSpeed: 30
+  turretSpeed: 35
   playerHasHealth: 1
   playerHasNewScale: 1
   playerHasBullets: 1
-  playerHealth: 15
+  playerHealth: 16
   playerScale: 1.5
   bulletSpeed: 7
-  cooldownAmount: 6
-  cooldownDelay: 6
+  cooldownAmount: 5
+  cooldownDelay: 5
   playerCanShoot: 3

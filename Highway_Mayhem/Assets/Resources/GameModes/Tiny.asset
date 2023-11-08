@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tiny
   m_EditorClassIdentifier: 
   gamemodeName: Tiny
-  highwaySpeed: 20
-  obstacleSpeed: 20
-  obstacleSpawnDelay: 0.5
-  playerSpeed: 6
+  highwaySpeed: 25
+  obstacleSpeed: 25
+  obstacleSpawnDelay: 0.45
+  playerSpeed: 8.5
   turretSpeed: 0
   playerHasHealth: 1
   playerHasNewScale: 1

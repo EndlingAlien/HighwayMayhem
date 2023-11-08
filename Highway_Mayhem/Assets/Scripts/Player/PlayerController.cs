@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     bool hasNewScale;
     float newScale;
 
+    //TinyToMighty
     float startTime;
     bool hasStartedScaling;
 
@@ -107,9 +108,8 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 startScale = new Vector3(0.4f, 0.4f, 0.4f);
         Vector3 finishScale = new Vector3(3.5f, 3.5f, 3.5f);
-        float scaleDuration = 240; // Adjust this value as needed.
+        float scaleDuration = 240;
 
-        // Calculate the time since the scene started and control the scaling accordingly.
         float elapsedTime = Time.time - startTime;
 
         if (elapsedTime < scaleDuration)
@@ -120,7 +120,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            // Ensure the scaling is finished by setting it to the final scale.
             transform.localScale = finishScale;
         }
     }

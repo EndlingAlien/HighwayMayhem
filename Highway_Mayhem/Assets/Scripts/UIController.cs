@@ -22,7 +22,7 @@ public class UIController : MonoBehaviour
 
     //Scripts
     DeathHandler deathHandler;
-    ScenePersist scenePersist;
+    ModePersist modePersist;
     GameModeController gameMode;
 
     #endregion
@@ -35,7 +35,7 @@ public class UIController : MonoBehaviour
         cooldownSlider = cooldownSliderObject.GetComponent<Slider>();
 
         deathHandler = FindObjectOfType<DeathHandler>();
-        scenePersist = FindObjectOfType<ScenePersist>();
+        modePersist = FindObjectOfType<ModePersist>();
         gameMode = FindObjectOfType<GameModeController>();
 
         ConfigureHealthSlider();
@@ -88,7 +88,7 @@ public class UIController : MonoBehaviour
         //debug key
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            scenePersist.ResetScenePersist();
+            modePersist.ResetScenePersist();
             LoadCorrectScene(0);
         }
     }
@@ -187,7 +187,7 @@ public class UIController : MonoBehaviour
 
     public void ResetScenePersist()
     {
-        scenePersist.ResetScenePersist();
+        modePersist.ResetScenePersist();
     }
 
     #endregion

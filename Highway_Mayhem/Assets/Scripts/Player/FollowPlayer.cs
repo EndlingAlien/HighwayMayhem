@@ -1,4 +1,3 @@
-using System.Numerics;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -51,6 +50,8 @@ public class FollowPlayer : MonoBehaviour
                 break;
         }
     }
+
+    #region Offset Methods
 
     void TinyOffset()
     {
@@ -108,4 +109,6 @@ public class FollowPlayer : MonoBehaviour
         Vector3 scaledOffset = new Vector3(offset.x * player.transform.localScale.x, offset.y * player.transform.localScale.y, offset.z * player.transform.localScale.z);
         transform.SetPositionAndRotation(player.transform.position + scaledOffset, Quaternion.Euler(rotation));
     }
+
+    #endregion
 }

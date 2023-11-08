@@ -1,0 +1,203 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6749026772612800498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749026772612800499}
+  m_Layer: 0
+  m_Name: Lane (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6749026772612800499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026772612800498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -15.5, y: -3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6749026772889211866}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6749026772889211865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749026772889211866}
+  - component: {fileID: 6749026772889211867}
+  m_Layer: 0
+  m_Name: Object Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6749026772889211866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026772889211865}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 7.5, y: 5, z: 430}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6749026772612800499}
+  - {fileID: 6749026774097349607}
+  - {fileID: 6749026773455649618}
+  - {fileID: 6749026774104747883}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &6749026772889211867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026772889211865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0264a0ba264144c1d91e0ca9aa3046b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefabs:
+  - {fileID: 8159620740935405659, guid: 14cfba90375624ed6804c647cfcdff2a, type: 3}
+  - {fileID: 3761355888679813405, guid: cb86448c1ae5542b39e333d568785b7f, type: 3}
+  - {fileID: 7681262635041188161, guid: e3fa58d109d554dd1872565435b656b2, type: 3}
+  - {fileID: 4427996440557319987, guid: c6f232ddb414944c4a03049c5b0e03be, type: 3}
+  - {fileID: 361407505701179399, guid: 600385f6e9b5f40688b0f3a9d89044a4, type: 3}
+  - {fileID: 5960570006021014634, guid: 9f5d65a727a12482194a2b810ffd7888, type: 3}
+  - {fileID: 4589886911549716586, guid: 42f037369e7f44120a9c216557b5530d, type: 3}
+  - {fileID: 3581383278054871905, guid: a9fcad901daa0441fba58c6384a83113, type: 3}
+  - {fileID: 4705904004581344130, guid: 775ad7903229b4ce7ab79e923bcb237b, type: 3}
+  carPrefabs:
+  - {fileID: 4182075410907838725, guid: 5ca6801c6c93c4d87867196977504523, type: 3}
+  - {fileID: 4538831000357269521, guid: cb0cb5a8b5392488ab5740fe6078be18, type: 3}
+  - {fileID: 5505603411216201884, guid: d6c94e7b4fc654e89b43b4197af0fe27, type: 3}
+  - {fileID: 6864805923436719980, guid: 00fd5121169194dcfb1563b3064dcd0e, type: 3}
+  - {fileID: 2219750101864430205, guid: 94e2ef832a4054f07b6602d1433fbd23, type: 3}
+  - {fileID: 8602790639004237236, guid: 79776cb3c758142e68231a3fefbbddcd, type: 3}
+  - {fileID: 7502173620974030185, guid: f6ac18dcaa0a34eceb2cb5153451a17b, type: 3}
+  - {fileID: 5053288979277292305, guid: 3e3a0d5ef9d60496e92b1e95d0a2a912, type: 3}
+  - {fileID: 4161676540147479043, guid: c40ded9fc981f437d8c2d571aa00d4f2, type: 3}
+  - {fileID: 6333573804148946793, guid: 25321f8cf2ede4b3c9fe07ddc6294c47, type: 3}
+  - {fileID: 3675646803215086669, guid: fa72dfc5f07ec442b919e0b7fc527844, type: 3}
+  - {fileID: 5060962928055714662, guid: 1b9f30c8e43d04d9885856ca9345b4fa, type: 3}
+  spawnPoint:
+  - {fileID: 6749026772612800499}
+  - {fileID: 6749026774097349607}
+  - {fileID: 6749026773455649618}
+  - {fileID: 6749026774104747883}
+  despawnObject: {fileID: 0}
+--- !u!1 &6749026773455649617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749026773455649618}
+  m_Layer: 0
+  m_Name: Lane (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6749026773455649618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026773455649617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.5, y: -3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6749026772889211866}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6749026774097349606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749026774097349607}
+  m_Layer: 0
+  m_Name: Lane (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6749026774097349607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026774097349606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.5, y: -3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6749026772889211866}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6749026774104747882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6749026774104747883}
+  m_Layer: 0
+  m_Name: Lane (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6749026774104747883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6749026774104747882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.5, y: -3.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6749026772889211866}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
