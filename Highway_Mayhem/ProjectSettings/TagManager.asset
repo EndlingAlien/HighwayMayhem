@@ -11,6 +11,7 @@ TagManager:
   - ControlsCanvas
   - SettingsCanvas
   - GameCanvas
+  - OptionsCanvas
   layers:
   - Default
   - TransparentFX

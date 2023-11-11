@@ -16,9 +16,12 @@ MonoBehaviour:
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
+  hasMoreThanOneRequirement: 1
+  RequiredModes:
+  - Easy
+  - Normal
+  - Hard
+  RequiredPoints: 50c30000c8af0000b8880000
   highwaySpeed: 30
   obstacleSpeed: 30
   obstacleSpawnDelay: 0.6

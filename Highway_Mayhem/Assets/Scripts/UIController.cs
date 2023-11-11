@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +16,13 @@ public class UIController : MonoBehaviour
     [Header("Sliders")]
     [SerializeField] GameObject healthSliderObject;
     [SerializeField] GameObject cooldownSliderObject;
+
+    [Header("Text")]
+    [SerializeField] TextMeshProUGUI wasdText;
+    [SerializeField] TextMeshProUGUI spaceText;
+    [SerializeField] TextMeshProUGUI arrowText;
+    [SerializeField] TextMeshProUGUI finalScoreText;
+    [SerializeField] RectTransform scoreRect;
     Slider healthSlider;
     Slider cooldownSlider;
 
@@ -24,6 +33,7 @@ public class UIController : MonoBehaviour
     DeathHandler deathHandler;
     ModePersist modePersist;
     GameModeController gameMode;
+    ScoreKeeper scoreKeeper;
 
     #endregion
 
@@ -37,7 +47,9 @@ public class UIController : MonoBehaviour
         deathHandler = FindObjectOfType<DeathHandler>();
         modePersist = FindObjectOfType<ModePersist>();
         gameMode = FindObjectOfType<GameModeController>();
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
 
+        PlaceSliders();
         ConfigureHealthSlider();
         ConfigureCooldownSlider();
     }
@@ -72,6 +84,31 @@ public class UIController : MonoBehaviour
         }
     }
 
+    void PlaceSliders()
+    {
+        RectTransform healthRect = healthSliderObject.GetComponent<RectTransform>();
+        RectTransform cooldownRect = cooldownSliderObject.GetComponent<RectTransform>();
+        // RectTransform scoreRect = scoreText.GetComponent<RectTransform>();
+
+        if (!gameMode.CurrentGameMode.GetPlayerHasBullets() && gameMode.CurrentGameMode.GetPlayerHasHealth())
+        {
+            healthRect.anchoredPosition = new Vector2(5.5f, -45.4f);
+            Debug.Log("Chamge red");
+        }
+        else if (gameMode.CurrentGameMode.GetPlayerHasBullets() && gameMode.CurrentGameMode.GetPlayerHasHealth())
+        {
+            healthRect.anchoredPosition = new Vector2(5.5f, healthRect.anchoredPosition.y);
+            cooldownRect.anchoredPosition = new Vector2(7.7f, healthRect.anchoredPosition.y);
+            Debug.Log("hshshs");
+        }
+
+        if (gameMode.CurrentGameMode.GetName() == "Trippy")
+        {
+            cooldownRect.anchoredPosition = new Vector2(0, 355);
+            scoreRect.anchoredPosition = new Vector2(434, 420);
+        }
+    }
+
     #endregion
 
     void Update()
@@ -89,7 +126,7 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             modePersist.ResetScenePersist();
-            LoadCorrectScene(0);
+            ReturnToMenu();
         }
     }
 
@@ -98,7 +135,8 @@ public class UIController : MonoBehaviour
     void PauseGame()
     {
         isGamePaused = true;
-        FindAndEnableCorrectCanvas("PauseMenuCanvas");
+        FindAndEnableCorrectCanvas("GameCanvas", false);
+        FindAndEnableCorrectCanvas("PauseMenuCanvas", true);
         deathHandler.PlayerWheels(false);
         Time.timeScale = 0;
     }
@@ -107,6 +145,7 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1;
         desiredCanvas.SetActive(false);
+        FindAndEnableCorrectCanvas("GameCanvas", true);
         deathHandler.PlayerWheels(true);
         isGamePaused = false;
     }
@@ -131,19 +170,27 @@ public class UIController : MonoBehaviour
 
     public void EnableGameOverCanvas()
     {
-        FindAndEnableCorrectCanvas("GameOverCanvas");
+        FindAndEnableCorrectCanvas("GameOverCanvas", true);
+        finalScoreText.text = "" + scoreKeeper.Points();
     }
 
-    void FindAndEnableCorrectCanvas(string desiredTag)
+    void FindAndEnableCorrectCanvas(string desiredTag, bool state)
     {
         foreach (GameObject canvas in canvases)
         {
             if (canvas.CompareTag(desiredTag))
             {
                 desiredCanvas = canvas;
-                desiredCanvas.SetActive(true);
+                desiredCanvas.SetActive(state);
             }
         }
+    }
+
+    void ConfigureControlText()
+    {
+        wasdText.text = "Use the" + "<color=green>" + " A " + "</color>" + "and" + "<color=green>" + " D " + "</color>" + "keys to control the turret";
+        spaceText.text = "Use the" + "<color=green>" + " SPACEBAR " + "</color>" + "to shoot";
+        arrowText.text = "Use the" + "<color=green>" + " LEFT " + "</color>" + "and" + "<color=green>" + " RIGHT " + "</color>" + "arrows to move the tank";
     }
 
     #endregion
@@ -159,30 +206,26 @@ public class UIController : MonoBehaviour
     public void ReturnToPauseCanvas()
     {
         desiredCanvas.SetActive(false);
-        FindAndEnableCorrectCanvas("PauseMenuCanvas");
+        FindAndEnableCorrectCanvas("PauseMenuCanvas", true);
     }
 
     public void OpenControls()
     {
         desiredCanvas.SetActive(false);
-        FindAndEnableCorrectCanvas("ControlsCanvas");
+        ConfigureControlText();
+        FindAndEnableCorrectCanvas("ControlsCanvas", true);
     }
 
     public void OpenSettings()
     {
         desiredCanvas.SetActive(false);
-        FindAndEnableCorrectCanvas("SettingsCanvas");
+        FindAndEnableCorrectCanvas("SettingsCanvas", true);
     }
 
-    public void LoadCorrectScene(int index)
+    public void ReturnToMenu()
     {
-        SceneManager.LoadScene(index);
-    }
-
-    public void ExitGame()
-    {
-        Application.Quit();
-        Debug.Log("Closing Application");
+        Time.timeScale = 1;
+        SceneManager.LoadScene(0);
     }
 
     public void ResetScenePersist()

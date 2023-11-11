@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Normal
   m_EditorClassIdentifier: 
   gamemodeName: Normal
+  requiredPoints: 0
+  requiredMode: 
+  isGameModeUnlocked: 1
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
   highwaySpeed: 20
   obstacleSpeed: 20
   obstacleSpawnDelay: 1

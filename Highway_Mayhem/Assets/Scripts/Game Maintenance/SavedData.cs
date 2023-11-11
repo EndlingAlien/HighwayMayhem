@@ -3,14 +3,19 @@ using UnityEngine;
 
 public class SavedData : MonoBehaviour
 {
+    #region Variables
+
     List<GameModeSO> lockedGameModes = new List<GameModeSO>();
     List<GameModeSO> unlockedGameModes = new List<GameModeSO>();
     Dictionary<string, int> highScore = new Dictionary<string, int>();
     GameModeSO unlockMode;
 
+    //PlayerPrefs Keys
     const string lockedGameModesKey = "LockedGameModes";
     const string unlockedGameModesKey = "UnlockedGameModes";
     const string highScoreKey = "Highscore";
+
+    #endregion
 
     void Awake()
     {
@@ -32,6 +37,8 @@ public class SavedData : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    #region Save Maintenance
 
     void AddGameModeToList()
     {
@@ -131,7 +138,9 @@ public class SavedData : MonoBehaviour
         return false;
     }
 
+    #endregion
 
+    #region PlayerPrefs Data Methods
     void SaveData()
     {
         string lockedGameModesJson = JsonUtility.ToJson(lockedGameModes);
@@ -177,4 +186,5 @@ public class SavedData : MonoBehaviour
         PlayerPrefs.DeleteKey(highScoreKey);
     }
 
+    #endregion
 }

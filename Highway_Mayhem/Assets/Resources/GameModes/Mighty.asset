@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Mighty
   m_EditorClassIdentifier: 
   gamemodeName: Mighty
+  requiredPoints: 9000
+  requiredMode: Achilles
+  isGameModeUnlocked: 0
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
   highwaySpeed: 30
   obstacleSpeed: 30
   obstacleSpawnDelay: 1.3

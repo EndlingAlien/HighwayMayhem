@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: TopDown
   m_EditorClassIdentifier: 
   gamemodeName: TopDown
+  requiredPoints: 15000
+  requiredMode: FirstPerson
+  isGameModeUnlocked: 0
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
   highwaySpeed: 20
   obstacleSpeed: 20
   obstacleSpawnDelay: 1

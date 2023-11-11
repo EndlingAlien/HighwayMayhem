@@ -13,6 +13,12 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   gamemodeName: Easy
+  requiredPoints: 0
+  requiredMode: 
+  isGameModeUnlocked: 1
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
   highwaySpeed: 15
   obstacleSpeed: 15
   obstacleSpawnDelay: 1.8

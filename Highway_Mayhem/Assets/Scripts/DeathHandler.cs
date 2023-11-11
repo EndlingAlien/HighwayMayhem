@@ -27,7 +27,6 @@ public class DeathHandler : MonoBehaviour
       StopObstacles();
       PlayerWheels(false);
       PlayerBullets();
-      ProcessPlayerScore();
 
       UIscript = FindObjectOfType<UIController>();
       UIscript.EnableGameOverCanvas();
@@ -79,7 +78,7 @@ public class DeathHandler : MonoBehaviour
       playerController.StopAllBullets();
    }
 
-   void ProcessPlayerScore()
+   public void ProcessPlayerScore()
    {
       scoreKeeper = FindObjectOfType<ScoreKeeper>();
       gameMode = FindObjectOfType<GameModeController>();

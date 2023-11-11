@@ -94,6 +94,7 @@ public class FollowPlayer : MonoBehaviour
         Camera mainCamera = GetComponent<Camera>();
         mainCamera.orthographic = true;
         mainCamera.orthographicSize = 13;
+        mainCamera.nearClipPlane = -20;
 
         Vector3 rotation = new Vector3(10, 0, 0);
         Vector3 offset = new Vector3(7.5f, 15, -7);

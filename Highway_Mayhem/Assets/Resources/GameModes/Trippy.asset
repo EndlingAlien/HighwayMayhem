@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Trippy
   m_EditorClassIdentifier: 
   gamemodeName: Trippy
-  requiredPoints: 0
-  requiredMode: 
+  requiredPoints: 35000
+  requiredMode: Normal
   isGameModeUnlocked: 0
   hasMoreThanOneRequirement: 0
   RequiredModes: []

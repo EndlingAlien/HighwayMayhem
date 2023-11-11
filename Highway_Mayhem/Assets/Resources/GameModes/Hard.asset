@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   gamemodeName: Hard
-  highwaySpeed: 30
-  obstacleSpeed: 30
-  obstacleSpawnDelay: 0.8
+  requiredPoints: 0
+  requiredMode: 
+  isGameModeUnlocked: 1
+  hasMoreThanOneRequirement: 0
+  RequiredModes: []
+  RequiredPoints: 
+  highwaySpeed: 35
+  obstacleSpeed: 35
+  obstacleSpawnDelay: 0.6
   playerSpeed: 13
   turretSpeed: 35
   playerHasHealth: 0
