@@ -4,6 +4,7 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem bulletParticles;
     [Tooltip("Particle system for the muzzle flash on turret")]
     [SerializeField] ParticleSystem turretFlash;
+    [Tooltip("Indicator for where bullets hit")]
+    [SerializeField] GameObject bulletIndicator;
+    [SerializeField] GameObject headlight;
+    [SerializeField] GameObject indicatorLight;
 
     //Gamemode
     GameModeController gameMode;
@@ -56,6 +61,8 @@ public class PlayerController : MonoBehaviour
     bool isFiring;
     float fireInput;
 
+    ModePersist modePersist;
+
     #endregion
 
     void Start()
@@ -65,6 +72,7 @@ public class PlayerController : MonoBehaviour
         deathHandler = FindObjectOfType<DeathHandler>();
         gameMode = FindObjectOfType<GameModeController>();
         uiScript = FindObjectOfType<UIController>();
+        modePersist = FindObjectOfType<ModePersist>();
 
         ConfigureGameModeVariables();
         CheckIfNewScale();
@@ -73,6 +81,26 @@ public class PlayerController : MonoBehaviour
 
         startTime = Time.time;
         hasStartedScaling = false;
+        headlight.SetActive(false);
+        indicatorLight.SetActive(false);
+
+        if (modePersist.ChosenLevel == "Night")
+        {
+            headlight.SetActive(true);
+            if (hasBullets)
+            {
+                indicatorLight.SetActive(true);
+            }
+        }
+
+        if (hasBullets)
+        {
+            bulletIndicator.SetActive(true);
+        }
+        else
+        {
+            bulletIndicator.SetActive(false);
+        }
     }
 
     #region GameMode Config Methods

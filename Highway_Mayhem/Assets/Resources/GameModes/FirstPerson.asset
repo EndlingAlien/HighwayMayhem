@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FirstPerson
   m_EditorClassIdentifier: 
   gamemodeName: FirstPerson
+  gameIndex: 3
   requiredPoints: 45000
   requiredMode: Easy
   isGameModeUnlocked: 0

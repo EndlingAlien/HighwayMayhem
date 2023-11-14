@@ -61,6 +61,26 @@ public class SavedData : MonoBehaviour
         }
     }
 
+public int? CheckHighscore(string gameMode)
+{
+    if (gameMode == null)
+    {
+        Debug.LogError("Game mode cannot be null.");
+        return null;
+    }
+
+    if (highScore.TryGetValue(gameMode, out int score))
+    {
+        return score;
+    }
+    else
+    {
+        return null;
+    }
+}
+
+
+
     public bool CheckAndSetHighscore(string gameMode, int score)
     {
         if (highScore.ContainsKey(gameMode))

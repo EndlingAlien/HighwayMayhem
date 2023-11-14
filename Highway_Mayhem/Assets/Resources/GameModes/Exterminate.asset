@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Exterminate
   m_EditorClassIdentifier: 
   gamemodeName: Exterminate
+  gameIndex: 8
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 0

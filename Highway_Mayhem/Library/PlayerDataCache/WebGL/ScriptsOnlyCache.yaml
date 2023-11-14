@@ -9,6 +9,7 @@ ScriptsOnlyBuild:
     - FollowPlayer
     - GameModeController
     - GameModeSO
+    - MenuUIController
     - ModePersist
     - MoveOnHighway
     - ObjectSpawner
@@ -32,6 +33,7 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
+    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
@@ -47,7 +49,11 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Mask
+    - UnityEngine.UI.ScrollRect
+    - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Toggle
   serializedClasses:
     Unity.InputSystem:
     - UnityEngine.InputSystem.InputAction
@@ -63,6 +69,9 @@ ScriptsOnlyBuild:
     - TMPro.FontAssetCreationSettings
     - TMPro.KerningTable
     - TMPro.TMP_Character
+    - TMPro.TMP_Dropdown/DropdownEvent
+    - TMPro.TMP_Dropdown/OptionData
+    - TMPro.TMP_Dropdown/OptionDataList
     - TMPro.TMP_FontFeatureTable
     - TMPro.TMP_FontWeightPair
     - TMPro.TMP_GlyphAdjustmentRecord
@@ -88,87 +97,123 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.ColorBlock
     - UnityEngine.UI.MaskableGraphic/CullStateChangedEvent
     - UnityEngine.UI.Navigation
+    - UnityEngine.UI.ScrollRect/ScrollRectEvent
+    - UnityEngine.UI.Scrollbar/ScrollEvent
     - UnityEngine.UI.Slider/SliderEvent
     - UnityEngine.UI.SpriteState
+    - UnityEngine.UI.Toggle/ToggleEvent
   methodsToPreserve:
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
   - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
-  - assembly: Assembly-CSharp
-    fullTypeName: ModePersist
-    methodName: SetGameMode
-  - assembly: Assembly-CSharp
-    fullTypeName: UIController
-    methodName: LoadCorrectScene
+    fullTypeName: MenuUIController
+    methodName: StartGame
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
+  - assembly: UnityEngine.CoreModule
+    fullTypeName: UnityEngine.GameObject
+    methodName: SetActive
   - assembly: Assembly-CSharp
     fullTypeName: UIController
     methodName: ReturnToPauseCanvas
   - assembly: Assembly-CSharp
     fullTypeName: UIController
     methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
   - assembly: Assembly-CSharp
     fullTypeName: UIController
     methodName: OpenSettings
@@ -180,12 +225,218 @@ ScriptsOnlyBuild:
     methodName: ResetScenePersist
   - assembly: Assembly-CSharp
     fullTypeName: UIController
-    methodName: LoadCorrectScene
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathHandler
+    methodName: ProcessPlayerScore
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: Reload
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenSettings
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenControls
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathHandler
+    methodName: ProcessPlayerScore
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: Reload
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenSettings
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenControls
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathHandler
+    methodName: ProcessPlayerScore
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: Reload
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToPauseCanvas
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenSettings
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: OpenControls
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ResetScenePersist
+  - assembly: Assembly-CSharp
+    fullTypeName: UIController
+    methodName: ReturnToMenu
+  - assembly: Assembly-CSharp
+    fullTypeName: DeathHandler
+    methodName: ProcessPlayerScore
   - assembly: Assembly-CSharp
     fullTypeName: UIController
     methodName: Reload
   sceneClasses:
-    Assets/Scenes/Main Scene.unity:
+    Assets/Scenes/City Level.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1550}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 1604}
+    - Class: 114
+      Script: {instanceID: 2764}
+    - Class: 114
+      Script: {instanceID: 2988}
+    - Class: 114
+      Script: {instanceID: 3024}
+    - Class: 114
+      Script: {instanceID: 3332}
+    - Class: 114
+      Script: {instanceID: 3656}
+    - Class: 114
+      Script: {instanceID: 4052}
+    - Class: 114
+      Script: {instanceID: 4146}
+    - Class: 114
+      Script: {instanceID: 4262}
+    - Class: 114
+      Script: {instanceID: 4742}
+    - Class: 114
+      Script: {instanceID: 5574}
+    - Class: 114
+      Script: {instanceID: 5668}
+    - Class: 114
+      Script: {instanceID: 6194}
+    - Class: 114
+      Script: {instanceID: 6336}
+    - Class: 114
+      Script: {instanceID: 6510}
+    - Class: 114
+      Script: {instanceID: 7056}
+    - Class: 114
+      Script: {instanceID: 7332}
+    - Class: 114
+      Script: {instanceID: 7724}
+    - Class: 114
+      Script: {instanceID: 8130}
+    - Class: 114
+      Script: {instanceID: 8266}
+    - Class: 114
+      Script: {instanceID: 8434}
+    - Class: 114
+      Script: {instanceID: 8618}
+    - Class: 114
+      Script: {instanceID: 8722}
+    - Class: 114
+      Script: {instanceID: 9030}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/Desert Level.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -219,57 +470,57 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1598}
+      Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 1602}
+      Script: {instanceID: 1604}
     - Class: 114
-      Script: {instanceID: 2762}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 2984}
+      Script: {instanceID: 2988}
     - Class: 114
-      Script: {instanceID: 3020}
+      Script: {instanceID: 3024}
     - Class: 114
-      Script: {instanceID: 3328}
+      Script: {instanceID: 3332}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 3656}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 4052}
     - Class: 114
-      Script: {instanceID: 4140}
+      Script: {instanceID: 4146}
     - Class: 114
-      Script: {instanceID: 4256}
+      Script: {instanceID: 4262}
     - Class: 114
-      Script: {instanceID: 4730}
+      Script: {instanceID: 4742}
     - Class: 114
-      Script: {instanceID: 5558}
+      Script: {instanceID: 5574}
     - Class: 114
-      Script: {instanceID: 5652}
+      Script: {instanceID: 5668}
     - Class: 114
-      Script: {instanceID: 6174}
+      Script: {instanceID: 6194}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6336}
     - Class: 114
-      Script: {instanceID: 6488}
+      Script: {instanceID: 6510}
     - Class: 114
-      Script: {instanceID: 7028}
+      Script: {instanceID: 7056}
     - Class: 114
-      Script: {instanceID: 7304}
+      Script: {instanceID: 7332}
     - Class: 114
-      Script: {instanceID: 7694}
+      Script: {instanceID: 7724}
     - Class: 114
-      Script: {instanceID: 8096}
+      Script: {instanceID: 8130}
     - Class: 114
-      Script: {instanceID: 8232}
+      Script: {instanceID: 8266}
     - Class: 114
-      Script: {instanceID: 8400}
+      Script: {instanceID: 8434}
     - Class: 114
-      Script: {instanceID: 8584}
+      Script: {instanceID: 8618}
     - Class: 114
-      Script: {instanceID: 8686}
+      Script: {instanceID: 8722}
     - Class: 114
-      Script: {instanceID: 8992}
+      Script: {instanceID: 9030}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -281,6 +532,117 @@ ScriptsOnlyBuild:
     - Class: 198
       Script: {instanceID: 0}
     - Class: 199
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/Grass Level.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1550}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 1604}
+    - Class: 114
+      Script: {instanceID: 2764}
+    - Class: 114
+      Script: {instanceID: 2988}
+    - Class: 114
+      Script: {instanceID: 3024}
+    - Class: 114
+      Script: {instanceID: 3332}
+    - Class: 114
+      Script: {instanceID: 3656}
+    - Class: 114
+      Script: {instanceID: 4052}
+    - Class: 114
+      Script: {instanceID: 4146}
+    - Class: 114
+      Script: {instanceID: 4262}
+    - Class: 114
+      Script: {instanceID: 4742}
+    - Class: 114
+      Script: {instanceID: 5574}
+    - Class: 114
+      Script: {instanceID: 5668}
+    - Class: 114
+      Script: {instanceID: 6194}
+    - Class: 114
+      Script: {instanceID: 6336}
+    - Class: 114
+      Script: {instanceID: 6510}
+    - Class: 114
+      Script: {instanceID: 7056}
+    - Class: 114
+      Script: {instanceID: 7332}
+    - Class: 114
+      Script: {instanceID: 7724}
+    - Class: 114
+      Script: {instanceID: 8130}
+    - Class: 114
+      Script: {instanceID: 8266}
+    - Class: 114
+      Script: {instanceID: 8434}
+    - Class: 114
+      Script: {instanceID: 8618}
+    - Class: 114
+      Script: {instanceID: 8722}
+    - Class: 114
+      Script: {instanceID: 9030}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -301,11 +663,19 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
     - Class: 49
+      Script: {instanceID: 0}
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -316,39 +686,49 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1548}
+      Script: {instanceID: 1550}
     - Class: 114
-      Script: {instanceID: 1598}
+      Script: {instanceID: 1600}
     - Class: 114
-      Script: {instanceID: 1812}
+      Script: {instanceID: 1814}
     - Class: 114
-      Script: {instanceID: 2268}
+      Script: {instanceID: 2270}
     - Class: 114
-      Script: {instanceID: 2762}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 3328}
+      Script: {instanceID: 2776}
     - Class: 114
-      Script: {instanceID: 4046}
+      Script: {instanceID: 2778}
     - Class: 114
-      Script: {instanceID: 4520}
+      Script: {instanceID: 3332}
     - Class: 114
-      Script: {instanceID: 4824}
+      Script: {instanceID: 4052}
     - Class: 114
-      Script: {instanceID: 5652}
+      Script: {instanceID: 4234}
     - Class: 114
-      Script: {instanceID: 5950}
+      Script: {instanceID: 4528}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 4838}
     - Class: 114
-      Script: {instanceID: 6488}
+      Script: {instanceID: 5506}
     - Class: 114
-      Script: {instanceID: 7304}
+      Script: {instanceID: 5668}
     - Class: 114
-      Script: {instanceID: 7638}
+      Script: {instanceID: 5966}
     - Class: 114
-      Script: {instanceID: 8096}
+      Script: {instanceID: 6336}
     - Class: 114
-      Script: {instanceID: 8686}
+      Script: {instanceID: 6510}
+    - Class: 114
+      Script: {instanceID: 6910}
+    - Class: 114
+      Script: {instanceID: 7332}
+    - Class: 114
+      Script: {instanceID: 7668}
+    - Class: 114
+      Script: {instanceID: 8130}
+    - Class: 114
+      Script: {instanceID: 8156}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -364,6 +744,115 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    Assets/Scenes/Night level.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 1550}
+    - Class: 114
+      Script: {instanceID: 1600}
+    - Class: 114
+      Script: {instanceID: 1604}
+    - Class: 114
+      Script: {instanceID: 2764}
+    - Class: 114
+      Script: {instanceID: 2988}
+    - Class: 114
+      Script: {instanceID: 3024}
+    - Class: 114
+      Script: {instanceID: 3332}
+    - Class: 114
+      Script: {instanceID: 3656}
+    - Class: 114
+      Script: {instanceID: 4052}
+    - Class: 114
+      Script: {instanceID: 4146}
+    - Class: 114
+      Script: {instanceID: 4262}
+    - Class: 114
+      Script: {instanceID: 4742}
+    - Class: 114
+      Script: {instanceID: 5574}
+    - Class: 114
+      Script: {instanceID: 5668}
+    - Class: 114
+      Script: {instanceID: 6194}
+    - Class: 114
+      Script: {instanceID: 6336}
+    - Class: 114
+      Script: {instanceID: 6510}
+    - Class: 114
+      Script: {instanceID: 7056}
+    - Class: 114
+      Script: {instanceID: 7332}
+    - Class: 114
+      Script: {instanceID: 7724}
+    - Class: 114
+      Script: {instanceID: 8130}
+    - Class: 114
+      Script: {instanceID: 8266}
+    - Class: 114
+      Script: {instanceID: 8434}
+    - Class: 114
+      Script: {instanceID: 8618}
+    - Class: 114
+      Script: {instanceID: 8722}
+    - Class: 114
+      Script: {instanceID: 9030}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 850595691
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -510,6 +999,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: EventSystem
+  - hash:
+      serializedVersion: 2
+      Hash: c78155641a873447f6a20dfb38bc888e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MenuUIController
   - hash:
       serializedVersion: 2
       Hash: fe64a45214940b510a0ec79c96d43498
@@ -1016,7 +1511,7 @@ ScriptsOnlyBuild:
     className: UnityOnDeselectMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 8946cc6050eeb7ac0d7daacd138010c2
+      Hash: 0f1dcdaba7dbd9f20225b29aad084f55
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameModeSO
@@ -1328,7 +1823,7 @@ ScriptsOnlyBuild:
     className: TrackedPoseDriver
   - hash:
       serializedVersion: 2
-      Hash: 8f8bff24bd91c8fdad049437337bcb71
+      Hash: 9b2751c3e5739cec48c774b39e227a16
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -1370,7 +1865,7 @@ ScriptsOnlyBuild:
     className: DeathHandler
   - hash:
       serializedVersion: 2
-      Hash: 08089a8b57715c5a6757c3661fde058c
+      Hash: 3d6aef437386757a631d2091b5ea2366
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIController
@@ -1419,6 +1914,9 @@ ScriptsOnlyBuild:
   platform: 20
   scenePathNames:
   - Assets/Scenes/Menu Scene.unity
-  - Assets/Scenes/Main Scene.unity
+  - Assets/Scenes/Grass Level.unity
+  - Assets/Scenes/Desert Level.unity
+  - Assets/Scenes/City Level.unity
+  - Assets/Scenes/Night level.unity
   playerPath: /Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/WebGL
     Builds

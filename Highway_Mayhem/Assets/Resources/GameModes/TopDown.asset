@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TopDown
   m_EditorClassIdentifier: 
   gamemodeName: TopDown
+  gameIndex: 7
   requiredPoints: 15000
   requiredMode: FirstPerson
   isGameModeUnlocked: 0

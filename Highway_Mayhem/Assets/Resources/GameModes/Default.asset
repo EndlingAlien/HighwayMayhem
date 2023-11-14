@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default
   m_EditorClassIdentifier: 
   gamemodeName: Default
+  gameIndex: 11
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 1

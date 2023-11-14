@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TinyToMighty
   m_EditorClassIdentifier: 
   gamemodeName: TinyToMighty
+  gameIndex: 5
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 0

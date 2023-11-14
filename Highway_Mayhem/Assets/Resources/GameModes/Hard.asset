@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Hard
   m_EditorClassIdentifier: 
   gamemodeName: Hard
+  gameIndex: 2
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 1

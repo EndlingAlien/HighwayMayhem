@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Tiny
   m_EditorClassIdentifier: 
   gamemodeName: Tiny
+  gameIndex: 9
   requiredPoints: 15000
   requiredMode: Trippy
   isGameModeUnlocked: 0

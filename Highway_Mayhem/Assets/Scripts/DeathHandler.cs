@@ -8,7 +8,7 @@ public class DeathHandler : MonoBehaviour
    public bool IsPlayerAlive { get { return isPlayerAlive; } }
 
    //Obstacle scripts
-   RepeatHighway repeatHighway;
+   RepeatHighway[] repeatHighway;
    DespawnObject despawnObject;
    MoveOnHighway moveOnHighway;
    PlayerController playerController;
@@ -36,11 +36,15 @@ public class DeathHandler : MonoBehaviour
 
    void StopObstacles()
    {
-      repeatHighway = FindObjectOfType<RepeatHighway>();
+      repeatHighway = FindObjectsOfType<RepeatHighway>();
       despawnObject = FindObjectOfType<DespawnObject>();
 
-      repeatHighway.enabled = false;
       isPlayerAlive = false;
+
+      foreach (RepeatHighway script in repeatHighway)
+      {
+         script.enabled = false;
+      }
 
       AccessDespawnChildScript();
    }

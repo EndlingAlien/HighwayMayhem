@@ -291,6 +291,7 @@
 "Assets/Scripts/Game Maintenance/GameModeSO.cs"
 "Assets/Scripts/Game Maintenance/ModePersist.cs"
 "Assets/Scripts/Game Maintenance/SavedData.cs"
+"Assets/Scripts/MenuUIController.cs"
 "Assets/Scripts/Obstacles/DeleteParticle.cs"
 "Assets/Scripts/Obstacles/DespawnObject.cs"
 "Assets/Scripts/Obstacles/MoveOnHighway.cs"

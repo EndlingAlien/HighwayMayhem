@@ -11,6 +11,7 @@ public class GameModeSO : ScriptableObject
 
   [Header("Game Mode Configuration")]
   [SerializeField] string gamemodeName;
+  [SerializeField] int gameIndex;
   [Tooltip("Points required to unlock this game mode")]
   [SerializeField] int requiredPoints;
   [Tooltip("Game mode required to unlock this mode")]
@@ -80,6 +81,7 @@ public class GameModeSO : ScriptableObject
   #endregion
 
   public string GetName() { return gamemodeName; }
+  public int GetGameIndex() { return gameIndex; }
   public int GetRequiredPoints() { return requiredPoints; }
   public string GetRequiredMode() { return requiredMode; }
   public bool IsGameModeUnlocked

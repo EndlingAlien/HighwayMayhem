@@ -113,11 +113,11 @@ public class UIController : MonoBehaviour
 
     void Update()
     {
-        if (!isGamePaused && Input.GetKeyDown(KeyCode.Escape))
+        if (!isGamePaused && Input.GetKeyDown(KeyCode.LeftControl))
         {
             PauseGame();
         }
-        else if (isGamePaused && Input.GetKeyDown(KeyCode.Escape))
+        else if (isGamePaused && Input.GetKeyDown(KeyCode.LeftControl))
         {
             UnpauseGame();
         }
