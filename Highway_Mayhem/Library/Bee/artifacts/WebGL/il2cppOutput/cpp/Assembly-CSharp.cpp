@@ -363,7 +363,6 @@ IL2CPP_EXTERN_C String_t* _stringLiteral0CB645EA85B80282F13438ABF6734989E6521741
 IL2CPP_EXTERN_C String_t* _stringLiteral0DA364C5509083DB04203B66C39AAF8FC56A2FCA;
 IL2CPP_EXTERN_C String_t* _stringLiteral0E466F59AFF9FCCC2EDF21E09D88C797FB8067F9;
 IL2CPP_EXTERN_C String_t* _stringLiteral12B9D5E3B209C878FED546DB16F1C1004DFF8DD3;
-IL2CPP_EXTERN_C String_t* _stringLiteral18CDCAA60C4ED826331DE7DAC40A30DB2FD618C8;
 IL2CPP_EXTERN_C String_t* _stringLiteral1B00FE8D93C8DA57AEA59DB0FE808A827C3503B6;
 IL2CPP_EXTERN_C String_t* _stringLiteral1B935DE8D8A22A4E05EDA9A126002FFC4084F3EF;
 IL2CPP_EXTERN_C String_t* _stringLiteral1FE00E688104147366B2636C408E7B6AEF30B4A9;
@@ -374,11 +373,11 @@ IL2CPP_EXTERN_C String_t* _stringLiteral46FD867EEBE1CC289A6470816910278798C5CF08
 IL2CPP_EXTERN_C String_t* _stringLiteral47AAF1F81AFF6C58770795B1469A06F7521A8C48;
 IL2CPP_EXTERN_C String_t* _stringLiteral4ADAA6EEE074D90049E75B8FBCAFF5599C5D1F29;
 IL2CPP_EXTERN_C String_t* _stringLiteral503CFF5146805BD5E5845E74F4630ED095A8F005;
+IL2CPP_EXTERN_C String_t* _stringLiteral54BF6E16C03D38D2749AAF157318863E62CAE7C5;
 IL2CPP_EXTERN_C String_t* _stringLiteral594DD0BF272B5892AA7F91E62C66BCD2666E72BB;
 IL2CPP_EXTERN_C String_t* _stringLiteral5AE353ED0CEBE43ADD8993103DF0461964977D33;
 IL2CPP_EXTERN_C String_t* _stringLiteral5D1AB0E992E660615D993190955E1843B07FA77C;
 IL2CPP_EXTERN_C String_t* _stringLiteral63E28A159617CF311BC1D119F3DA19395EAD5EEC;
-IL2CPP_EXTERN_C String_t* _stringLiteral65438A64857BC43E8785DB9600A6632066BB623A;
 IL2CPP_EXTERN_C String_t* _stringLiteral65A5B1255B26233FE1FC974B833C854CEE786440;
 IL2CPP_EXTERN_C String_t* _stringLiteral66AB94E2CAF37EAB1104E97263688D17542CBD3F;
 IL2CPP_EXTERN_C String_t* _stringLiteral68968B7B61D59491D6425029DFC0BEE286926FF7;
@@ -9789,6 +9788,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerController_ShootTurret_m2010D28498
 	if (!s_Il2CppMethodInitialized)
 	{
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Component_GetComponent_TisParticleSystem_tB19986EE308BD63D36FB6025EEEAFBEDB97C67C1_mF2B700ECAEEEDBCC076CC66C9592C6DDFA0D36F9_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral54BF6E16C03D38D2749AAF157318863E62CAE7C5);
 		s_Il2CppMethodInitialized = true;
 	}
 	EmissionModule_t0F469FA4A08003F6D9C610D2F716A9DFDB9A3678 V_0;
@@ -9810,29 +9811,32 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void PlayerController_ShootTurret_m2010D28498
 		bool L_5 = __this->___isFiring_33;
 		if (!L_5)
 		{
-			goto IL_003c;
+			goto IL_0046;
 		}
 	}
 	{
 		bool L_6 = __this->___hasCooldown_22;
 		if (L_6)
 		{
-			goto IL_003c;
+			goto IL_0046;
 		}
 	}
 	{
 		// bulletEmission.enabled = true;
 		EmissionModule_set_enabled_mC82B6915ED485AB8DB54DFA6599C9C973BB5D867((&V_0), (bool)1, NULL);
+		// Debug.Log("Shooting bullets");
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral54BF6E16C03D38D2749AAF157318863E62CAE7C5, NULL);
 		return;
 	}
 
-IL_003c:
+IL_0046:
 	{
 		// else if (!isFiring)
 		bool L_7 = __this->___isFiring_33;
 		if (L_7)
 		{
-			goto IL_004c;
+			goto IL_0056;
 		}
 	}
 	{
@@ -9840,7 +9844,7 @@ IL_003c:
 		EmissionModule_set_enabled_mC82B6915ED485AB8DB54DFA6599C9C973BB5D867((&V_0), (bool)0, NULL);
 	}
 
-IL_004c:
+IL_0056:
 	{
 		// }
 		return;
@@ -10754,11 +10758,8 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIController_PlaceSliders_mFE85B31705379
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&GameObject_GetComponent_TisRectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5_m1592DCB5AA07291F73A76006F0913A64DFB8A9C4_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral18CDCAA60C4ED826331DE7DAC40A30DB2FD618C8);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral5D1AB0E992E660615D993190955E1843B07FA77C);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral65438A64857BC43E8785DB9600A6632066BB623A);
 		s_Il2CppMethodInitialized = true;
 	}
 	RectTransform_t6C5DA5E41A89E0F488B001E45E58963480E543A5* V_0 = NULL;
@@ -10782,7 +10783,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIController_PlaceSliders_mFE85B31705379
 		L_6 = GameModeSO_GetPlayerHasBullets_mAD96D0D5E3595BFA78AC05FB1985D08FDA214715_inline(L_5, NULL);
 		if (L_6)
 		{
-			goto IL_005d;
+			goto IL_0053;
 		}
 	}
 	{
@@ -10793,7 +10794,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIController_PlaceSliders_mFE85B31705379
 		L_9 = GameModeSO_GetPlayerHasHealth_mF0547C99BBE44FAE35247BE0B5714151DE2C7B06_inline(L_8, NULL);
 		if (!L_9)
 		{
-			goto IL_005d;
+			goto IL_0053;
 		}
 	}
 	{
@@ -10803,13 +10804,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UIController_PlaceSliders_mFE85B31705379
 		memset((&L_11), 0, sizeof(L_11));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_11), (5.5f), (-45.4000015f), /*hidden argument*/NULL);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_10, L_11, NULL);
-		// Debug.Log("Chamge red");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral65438A64857BC43E8785DB9600A6632066BB623A, NULL);
-		goto IL_00c1;
+		goto IL_00ad;
 	}
 
-IL_005d:
+IL_0053:
 	{
 		// else if (gameMode.CurrentGameMode.GetPlayerHasBullets() && gameMode.CurrentGameMode.GetPlayerHasHealth())
 		GameModeController_t4DA02CE8474D94B106A409DF4307DE12A85C586A* L_12 = __this->___gameMode_18;
@@ -10819,7 +10817,7 @@ IL_005d:
 		L_14 = GameModeSO_GetPlayerHasBullets_mAD96D0D5E3595BFA78AC05FB1985D08FDA214715_inline(L_13, NULL);
 		if (!L_14)
 		{
-			goto IL_00c1;
+			goto IL_00ad;
 		}
 	}
 	{
@@ -10830,7 +10828,7 @@ IL_005d:
 		L_17 = GameModeSO_GetPlayerHasHealth_mF0547C99BBE44FAE35247BE0B5714151DE2C7B06_inline(L_16, NULL);
 		if (!L_17)
 		{
-			goto IL_00c1;
+			goto IL_00ad;
 		}
 	}
 	{
@@ -10854,12 +10852,9 @@ IL_005d:
 		memset((&L_27), 0, sizeof(L_27));
 		Vector2__ctor_m9525B79969AFFE3254B303A40997A56DEEB6F548_inline((&L_27), (7.69999981f), L_26, /*hidden argument*/NULL);
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_23, L_27, NULL);
-		// Debug.Log("hshshs");
-		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
-		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(_stringLiteral18CDCAA60C4ED826331DE7DAC40A30DB2FD618C8, NULL);
 	}
 
-IL_00c1:
+IL_00ad:
 	{
 		// if (gameMode.CurrentGameMode.GetName() == "Trippy")
 		GameModeController_t4DA02CE8474D94B106A409DF4307DE12A85C586A* L_28 = __this->___gameMode_18;
@@ -10871,7 +10866,7 @@ IL_00c1:
 		L_31 = String_op_Equality_m030E1B219352228970A076136E455C4E568C02C1(L_30, _stringLiteral5D1AB0E992E660615D993190955E1843B07FA77C, NULL);
 		if (!L_31)
 		{
-			goto IL_010c;
+			goto IL_00f8;
 		}
 	}
 	{
@@ -10889,7 +10884,7 @@ IL_00c1:
 		RectTransform_set_anchoredPosition_mF903ACE04F6959B1CD67E2B94FABC0263068F965(L_34, L_35, NULL);
 	}
 
-IL_010c:
+IL_00f8:
 	{
 		// }
 		return;

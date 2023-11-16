@@ -19,8 +19,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem turretFlash;
     [Tooltip("Indicator for where bullets hit")]
     [SerializeField] GameObject bulletIndicator;
+    [SerializeField] ParticleSystem cooldownSmoke;
+
+    [Header("Night Mode Config")]
     [SerializeField] GameObject headlight;
     [SerializeField] GameObject indicatorLight;
+
+    [Header("Audio Sources")]
+    [SerializeField] AudioSource tankAudio;
+    [SerializeField] AudioSource bulletAudio;
+    [SerializeField] AudioSource turretRotatingAudio;
+    [SerializeField] AudioSource cooldownAudio;
+
 
     //Gamemode
     GameModeController gameMode;
@@ -42,6 +52,7 @@ public class PlayerController : MonoBehaviour
     //Cooldown
     UIController uiScript;
     bool hasCooldown;
+    ParticleSystem.EmissionModule bulletEmission;
     float cooldownTime;
     float cooldownDelay = 5f;
 
@@ -68,7 +79,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         hasCooldown = false;
-
+        bulletEmission = bulletParticles.GetComponent<ParticleSystem>().emission;
         deathHandler = FindObjectOfType<DeathHandler>();
         gameMode = FindObjectOfType<GameModeController>();
         uiScript = FindObjectOfType<UIController>();
@@ -101,6 +112,14 @@ public class PlayerController : MonoBehaviour
         {
             bulletIndicator.SetActive(false);
         }
+    }
+
+    public void StopAudio()
+    {
+        bulletAudio.enabled = false;
+        turretRotatingAudio.enabled = false;
+        tankAudio.enabled = false;
+        cooldownAudio.Stop();
     }
 
     #region GameMode Config Methods
@@ -205,6 +224,18 @@ public class PlayerController : MonoBehaviour
     {
         float newRotation = currentRotation + lookInput.x * lookSpeed * Time.deltaTime;
         SetCurrentRotation(newRotation);
+
+        if (lookInput.magnitude > 0)
+        {
+            if (!turretRotatingAudio.isPlaying)
+            {
+                turretRotatingAudio.enabled = true;
+            }
+        }
+        else
+        {
+            turretRotatingAudio.enabled = false;
+        }
     }
 
     void SetCurrentRotation(float rot)
@@ -215,15 +246,16 @@ public class PlayerController : MonoBehaviour
 
     void ShootTurret()
     {
-        var bulletEmission = bulletParticles.GetComponent<ParticleSystem>().emission;
         bulletEmission.rateOverTime = bulletSpeed;
 
         if (isFiring && !hasCooldown)
         {
             bulletEmission.enabled = true;
+            bulletAudio.enabled = true;
         }
         else if (!isFiring)
         {
+            bulletAudio.enabled = false;
             bulletEmission.enabled = false;
         }
     }
@@ -235,11 +267,16 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator BulletCooldown()
     {
+        var smokeEmission = cooldownSmoke.GetComponent<ParticleSystem>().emission;
         hasCooldown = true;
+        smokeEmission.enabled = true;
+        cooldownAudio.Play();
         fireInput = 0;
         isFiring = false;
         yield return new WaitForSeconds(cooldownDelay);
         hasCooldown = false;
+        cooldownAudio.Stop();
+        smokeEmission.enabled = false;
         cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
         uiScript.DisplayBulletCooldown(cooldownTime);
     }
@@ -249,6 +286,7 @@ public class PlayerController : MonoBehaviour
         fireInput = 0;
         isFiring = false;
         bulletSpeed = 0;
+        bulletEmission.enabled = false;
         bulletParticles.Stop();
     }
 

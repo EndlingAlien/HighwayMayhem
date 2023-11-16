@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Achilles
   gameIndex: 4
-  requiredPoints: 25000
+  requiredPoints: 6000
   requiredMode: Hard
   isGameModeUnlocked: 0
   hasMoreThanOneRequirement: 0

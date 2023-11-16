@@ -21,7 +21,7 @@ MonoBehaviour:
   RequiredModes:
   - Tiny
   - Mighty
-  RequiredPoints: e02e000010270000
+  RequiredPoints: 1027000010270000
   highwaySpeed: 25
   obstacleSpeed: 25
   obstacleSpawnDelay: 0.8

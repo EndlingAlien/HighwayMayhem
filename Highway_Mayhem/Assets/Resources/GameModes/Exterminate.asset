@@ -22,7 +22,7 @@ MonoBehaviour:
   - Easy
   - Normal
   - Hard
-  RequiredPoints: 50c30000c8af0000b8880000
+  RequiredPoints: 102700001027000010270000
   highwaySpeed: 30
   obstacleSpeed: 30
   obstacleSpawnDelay: 0.6

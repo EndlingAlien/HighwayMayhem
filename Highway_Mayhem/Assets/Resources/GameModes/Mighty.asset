@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Mighty
   gameIndex: 10
-  requiredPoints: 9000
+  requiredPoints: 3000
   requiredMode: Achilles
   isGameModeUnlocked: 0
   hasMoreThanOneRequirement: 0

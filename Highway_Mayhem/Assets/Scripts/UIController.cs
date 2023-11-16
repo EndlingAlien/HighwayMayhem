@@ -88,18 +88,15 @@ public class UIController : MonoBehaviour
     {
         RectTransform healthRect = healthSliderObject.GetComponent<RectTransform>();
         RectTransform cooldownRect = cooldownSliderObject.GetComponent<RectTransform>();
-        // RectTransform scoreRect = scoreText.GetComponent<RectTransform>();
 
         if (!gameMode.CurrentGameMode.GetPlayerHasBullets() && gameMode.CurrentGameMode.GetPlayerHasHealth())
         {
             healthRect.anchoredPosition = new Vector2(5.5f, -45.4f);
-            Debug.Log("Chamge red");
         }
         else if (gameMode.CurrentGameMode.GetPlayerHasBullets() && gameMode.CurrentGameMode.GetPlayerHasHealth())
         {
             healthRect.anchoredPosition = new Vector2(5.5f, healthRect.anchoredPosition.y);
             cooldownRect.anchoredPosition = new Vector2(7.7f, healthRect.anchoredPosition.y);
-            Debug.Log("hshshs");
         }
 
         if (gameMode.CurrentGameMode.GetName() == "Trippy")

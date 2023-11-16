@@ -4,6 +4,8 @@ public class DeathHandler : MonoBehaviour
 {
    #region Variables
 
+AudioSource playerExplodeAudio;
+
    bool isPlayerAlive = true;
    public bool IsPlayerAlive { get { return isPlayerAlive; } }
 
@@ -22,14 +24,19 @@ public class DeathHandler : MonoBehaviour
 
    #endregion
 
+   private void Start() {
+      playerExplodeAudio = GetComponent<AudioSource>();
+   }
+
    public void ActivateGameOver()
    {
       StopObstacles();
       PlayerWheels(false);
-      PlayerBullets();
+      PlayerBulletsAndAudio();
 
       UIscript = FindObjectOfType<UIController>();
       UIscript.EnableGameOverCanvas();
+      playerExplodeAudio.Play();
    }
 
    #region Obstacle Method
@@ -76,11 +83,13 @@ public class DeathHandler : MonoBehaviour
       }
    }
 
-   void PlayerBullets()
+   void PlayerBulletsAndAudio()
    {
       playerController = FindObjectOfType<PlayerController>();
       playerController.StopAllBullets();
+      playerController.StopAudio();
    }
+
 
    public void ProcessPlayerScore()
    {

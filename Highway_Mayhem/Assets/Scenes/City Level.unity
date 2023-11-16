@@ -400,10 +400,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6849910349998193280, guid: 13546e1fd8e714cf0bc58b3ff25f87b5, type: 3}
-      propertyPath: near clip plane
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 6849910350259295452, guid: 13546e1fd8e714cf0bc58b3ff25f87b5, type: 3}
       propertyPath: m_RootOrder
       value: 0

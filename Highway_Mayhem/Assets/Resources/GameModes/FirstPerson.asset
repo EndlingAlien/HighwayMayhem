@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: FirstPerson
   gameIndex: 3
-  requiredPoints: 45000
+  requiredPoints: 15000
   requiredMode: Easy
   isGameModeUnlocked: 0
   hasMoreThanOneRequirement: 0
@@ -33,4 +33,4 @@ MonoBehaviour:
   bulletSpeed: 4.5
   cooldownAmount: 6
   cooldownDelay: 6
-  playerCanShoot: 1
+  playerCanShoot: 2

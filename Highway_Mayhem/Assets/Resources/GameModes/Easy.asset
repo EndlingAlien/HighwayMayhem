@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Easy
   m_EditorClassIdentifier: 
   gamemodeName: Easy
+  gameIndex: 0
   requiredPoints: 0
   requiredMode: 
   isGameModeUnlocked: 1
@@ -32,4 +33,4 @@ MonoBehaviour:
   bulletSpeed: 5.5
   cooldownAmount: 10
   cooldownDelay: 10
-  playerCanShoot: 1
+  playerCanShoot: 3

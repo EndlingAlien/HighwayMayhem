@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
+using System.Collections;
 
 public class MenuUIController : MonoBehaviour
 {
@@ -11,7 +13,11 @@ public class MenuUIController : MonoBehaviour
     [Space(10)]
 
     [Header("Text Fields")]
+    [SerializeField] TextMeshProUGUI gameModeStatusText;
+    [SerializeField] TextMeshProUGUI requiredGameModeText;
+    [SerializeField] TextMeshProUGUI requiredHighscoreText;
     [SerializeField] TextMeshProUGUI bulletBoolText;
+    [SerializeField] TextMeshProUGUI playerCanShootText;
     [SerializeField] TextMeshProUGUI healthBoolText;
     [SerializeField] TextMeshProUGUI highscoreText;
     [Space(10)]
@@ -23,7 +29,9 @@ public class MenuUIController : MonoBehaviour
 
     [Header("Images")]
     [SerializeField] UnityEngine.UI.Image gameModeImage;
+    [SerializeField] GameObject lockedImage;
     [SerializeField] UnityEngine.UI.Image levelImage;
+    [SerializeField] GameObject warningImage;
 
     [Header("Image Array's")]
     [SerializeField] Sprite[] gameModeImages;
@@ -32,6 +40,11 @@ public class MenuUIController : MonoBehaviour
     [Header("Game Modes")]
     [SerializeField] string[] gameModeNames;
     GameModeSO currentGameMode;
+
+    [Header("Audio")]
+    [SerializeField] AudioClip[] paperAudioClips;
+    [SerializeField] AudioClip clickAudio;
+    AudioSource audioSource;
 
     string chosenMode;
     int selectedLevel;
@@ -43,6 +56,7 @@ public class MenuUIController : MonoBehaviour
     {
         modePersist = FindObjectOfType<ModePersist>();
         savedData = FindObjectOfType<SavedData>();
+        audioSource = GetComponent<AudioSource>();
 
         gamemodeDropdown.onValueChanged.AddListener(delegate { GameModeValueChanged(gamemodeDropdown); });
         levelDropdown.onValueChanged.AddListener(delegate { LevelValueChanged(levelDropdown); });
@@ -81,9 +95,26 @@ public class MenuUIController : MonoBehaviour
 
     void ConfigureMissionDetails()
     {
+        bool isGameUnlocked = currentGameMode.IsGameModeUnlocked;
         bool hasHealth = currentGameMode.GetPlayerHasHealth();
         bool hasBullets = currentGameMode.GetPlayerHasBullets();
+
         int? score = savedData.CheckHighscore(chosenMode);
+
+        if (isGameUnlocked)
+        {
+            gameModeStatusText.text = "Granted";
+            requiredGameModeText.text = "NA";
+            requiredHighscoreText.text = "NA";
+            lockedImage.SetActive(false);
+        }
+        else
+        {
+            gameModeStatusText.text = "Denied";
+            requiredGameModeText.text = currentGameMode.GetRequiredMode();
+            requiredHighscoreText.text = currentGameMode.GetRequiredPoints().ToString();
+            lockedImage.SetActive(true);
+        }
 
         if (hasHealth)
         {
@@ -97,10 +128,12 @@ public class MenuUIController : MonoBehaviour
         if (hasBullets)
         {
             bulletBoolText.text = "AFFIRMATIVE";
+            playerCanShootText.text = ConvertCanShootIntToString();
         }
         else
         {
             bulletBoolText.text = "NEGATIVE";
+            playerCanShootText.text = "NA";
         }
 
         if (score.HasValue)
@@ -110,6 +143,25 @@ public class MenuUIController : MonoBehaviour
         else
         {
             highscoreText.text = "Metrics not Available";
+        }
+    }
+
+    string ConvertCanShootIntToString()
+    {
+        switch (currentGameMode.GetPlayerCanShoot())
+        {
+            case 1:
+                return "Obstacles";
+
+            case 2:
+                return "Cars";
+
+            case 3:
+                return "Everything";
+
+            default:
+                Debug.Log("Can not find value for PlayerCanShoot");
+                return "Obstacles";
         }
     }
 
@@ -155,35 +207,64 @@ public class MenuUIController : MonoBehaviour
         Debug.Log("Closing Application");
     }
 
+    public void PlayClickAudio()
+    {
+        audioSource.clip = clickAudio;
+        audioSource.volume = 0.3f;
+        audioSource.Play();
+    }
+
+    public void PlayPaperAudio()
+    {
+        int index = UnityEngine.Random.Range(1, paperAudioClips.Length);
+        audioSource.clip = paperAudioClips[index];
+        audioSource.volume = 1;
+        audioSource.Play();
+    }
+
     public void StartGame()
     {
-        switch (selectedLevel)
+        if (currentGameMode.IsGameModeUnlocked)
         {
-            case 0:
-                modePersist.Setlevel("Grass");
-                LoadCorrectScene(1);
-                break;
+            switch (selectedLevel)
+            {
+                case 0:
+                    modePersist.Setlevel("Grass");
+                    LoadCorrectScene(1);
+                    break;
 
-            case 1:
-                modePersist.Setlevel("Desert");
-                LoadCorrectScene(2);
-                break;
+                case 1:
+                    modePersist.Setlevel("Desert");
+                    LoadCorrectScene(2);
+                    break;
 
-            case 2:
-                modePersist.Setlevel("City");
-                LoadCorrectScene(3);
-                break;
+                case 2:
+                    modePersist.Setlevel("City");
+                    LoadCorrectScene(3);
+                    break;
 
-            case 3:
-                modePersist.Setlevel("Night");
-                LoadCorrectScene(4);
-                break;
+                case 3:
+                    modePersist.Setlevel("Night");
+                    LoadCorrectScene(4);
+                    break;
 
-            default:
-                modePersist.Setlevel("Grass");
-                LoadCorrectScene(1);
-                break;
+                default:
+                    modePersist.Setlevel("Grass");
+                    LoadCorrectScene(1);
+                    break;
+            }
         }
+        else
+        {
+            StartCoroutine(ShowWarning());
+        }
+    }
+
+    IEnumerator ShowWarning()
+    {
+        warningImage.SetActive(true);
+        yield return new WaitForSeconds(2);
+        warningImage.SetActive(false);
     }
 
     void LoadCorrectScene(int sceneIndex)

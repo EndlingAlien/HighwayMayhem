@@ -33,4 +33,4 @@ MonoBehaviour:
   bulletSpeed: 5
   cooldownAmount: 4.5
   cooldownDelay: 4.5
-  playerCanShoot: 1
+  playerCanShoot: 2

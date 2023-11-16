@@ -65,7 +65,6 @@ public int? CheckHighscore(string gameMode)
 {
     if (gameMode == null)
     {
-        Debug.LogError("Game mode cannot be null.");
         return null;
     }
 
