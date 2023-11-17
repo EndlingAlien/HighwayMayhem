@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenuAttribute(menuName = "Create new GameMode", fileName = "GameMode Name")]
@@ -7,10 +6,10 @@ public class GameModeSO : ScriptableObject
 {
   #region Variable Configuration
 
-  public Dictionary<string, int> requiredModesAndPoints = new Dictionary<string, int>();
-
   [Header("Game Mode Configuration")]
+  [Tooltip("Name of the Game Mode")]
   [SerializeField] string gamemodeName;
+  [Tooltip("Index of game mode")]
   [SerializeField] int gameIndex;
   [Tooltip("Points required to unlock this game mode")]
   [SerializeField] int requiredPoints;
@@ -20,21 +19,11 @@ public class GameModeSO : ScriptableObject
   [SerializeField] bool isGameModeUnlocked;
   [Space(15)]
 
-  [Header("**ONLY FOR GAMEMODES WITH MULTIPLE REQUIREMENTS**")]
-  [Tooltip("This bool must be checked")]
-  [SerializeField] bool hasMoreThanOneRequirement;
-  [Header("Make sure Index for name and points is the same and the same amount")]
-  [Tooltip("Modes required to unlock this mode")]
-  [SerializeField] List<string> RequiredModes = new List<string>();
-  [Tooltip("Points required for above mode in same index needed to unlock this mode")]
-  [SerializeField] List<int> RequiredPoints = new List<int>();
-  [Header("**ONLY FOR GAMEMODES WITH MULTIPLE REQUIREMENTS**")]
-  [Space(35)]
-
   [Header("Environment Config")]
   [Tooltip("How fast should the highway move (same as Obstacle Speed)")]
   [SerializeField] float highwaySpeed;
   [Space(5)]
+
   [Tooltip("How fast should objects move on highway")]
   [SerializeField] float obstacleSpeed;
   [Tooltip("Time inbetween obstacle instatiation")]
@@ -80,35 +69,15 @@ public class GameModeSO : ScriptableObject
 
   #endregion
 
+  //Following getter methods are for scripts
   public string GetName() { return gamemodeName; }
   public int GetGameIndex() { return gameIndex; }
   public int GetRequiredPoints() { return requiredPoints; }
   public string GetRequiredMode() { return requiredMode; }
-  public bool IsGameModeUnlocked
-  {
-    get { return isGameModeUnlocked; }
-    set { isGameModeUnlocked = value; }
-  }
-
-  public bool GetHasMoreThanOneRequirement() { return hasMoreThanOneRequirement; }
-  void RequiredModesAndPoints()
-  {
-    if (RequiredModes.Count == RequiredPoints.Count)
-    {
-      requiredModesAndPoints = new Dictionary<string, int>();
-
-      for (int i = 0; i < RequiredModes.Count; i++)
-      {
-        requiredModesAndPoints[RequiredModes[i]] = RequiredPoints[i];
-      }
-    }
-    else
-    {
-      Debug.LogError("The number of required modes and required points must match!");
-    }
-  }
+  public bool IsGameModeUnlocked { get { return isGameModeUnlocked; } set { isGameModeUnlocked = value; } }
 
   public float GetHighwaySpeed() { return highwaySpeed; }
+
   public float GetObstacleSpeed() { return obstacleSpeed; }
   public float GetObstacleSpawnDelay() { return obstacleSpawnDelay; }
 
@@ -125,5 +94,6 @@ public class GameModeSO : ScriptableObject
   public float GetBulletSpeed() { return bulletSpeed; }
   public float GetCooldownAmount() { return cooldownAmount; }
   public float GetCooldownDelay() { return cooldownDelay; }
+
   public float GetPlayerCanShoot() { return playerCanShoot; }
 }

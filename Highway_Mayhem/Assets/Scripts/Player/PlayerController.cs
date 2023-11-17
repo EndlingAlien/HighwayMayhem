@@ -4,35 +4,43 @@ using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class PlayerController : MonoBehaviour
 {
     #region Variables
 
+    // Variables for player configuration
     [Header("Player Config")]
-    [Tooltip("Turret gameobject refrence")]
+    [Tooltip("Turret gameobject reference")]
     [SerializeField] Transform tankTurret;
-    [Tooltip("Bullet Particle System refrence")]
+    [Tooltip("Bullet Particle System reference")]
     [SerializeField] ParticleSystem bulletParticles;
     [Tooltip("Particle system for the muzzle flash on turret")]
     [SerializeField] ParticleSystem turretFlash;
     [Tooltip("Indicator for where bullets hit")]
     [SerializeField] GameObject bulletIndicator;
+    [Tooltip("Smoke Particle System for when cooldown is activated")]
     [SerializeField] ParticleSystem cooldownSmoke;
 
+    // Variables for Night Mode configuration
     [Header("Night Mode Config")]
+    [Tooltip("Headlights for player")]
     [SerializeField] GameObject headlight;
+    [Tooltip("Light for Bullet Indicator")]
     [SerializeField] GameObject indicatorLight;
 
+    // Audio sources for various player actions
     [Header("Audio Sources")]
+    [Tooltip("Audio source for the tank")]
     [SerializeField] AudioSource tankAudio;
+    [Tooltip("Audio source for when the player is shooting bullets")]
     [SerializeField] AudioSource bulletAudio;
+    [Tooltip("Audio source for when the turret head is rotating left and right")]
     [SerializeField] AudioSource turretRotatingAudio;
+    [Tooltip("Audio source for when the cooldown becomes active")]
     [SerializeField] AudioSource cooldownAudio;
 
-
-    //Gamemode
+    // Game mode variables
     GameModeController gameMode;
     float playerSpeed;
     float lookSpeed;
@@ -41,50 +49,50 @@ public class PlayerController : MonoBehaviour
     bool hasNewScale;
     float newScale;
 
-    //TinyToMighty
+    // Variables for TinyToMighty scaling
     float startTime;
     bool hasStartedScaling;
 
-    //Death Handler
+    // Death Handler variables
     DeathHandler deathHandler;
     bool playerAlive;
 
-    //Cooldown
+    // Cooldown variables
     UIController uiScript;
     bool hasCooldown;
     ParticleSystem.EmissionModule bulletEmission;
     float cooldownTime;
     float cooldownDelay = 5f;
 
-    //Turret Rotation
+    // Turret Rotation variables
     float currentRotation;
     float minRot = -40;
     float maxRot = 40;
 
-    //Tank Movement
+    // Tank Movement variables
     float minX = -8.0f;
     float maxX = 23.0f;
     float rotationFactor = 2.5f;
 
-    //Input
+    // Input variables
     Vector2 moveInput;
     Vector2 lookInput;
     bool isFiring;
     float fireInput;
 
     ModePersist modePersist;
+    SettingsData settingsData;
 
     #endregion
 
+    // Start is called before the first frame update
     void Start()
     {
+        // Initialize variables and components
         hasCooldown = false;
         bulletEmission = bulletParticles.GetComponent<ParticleSystem>().emission;
-        deathHandler = FindObjectOfType<DeathHandler>();
-        gameMode = FindObjectOfType<GameModeController>();
-        uiScript = FindObjectOfType<UIController>();
-        modePersist = FindObjectOfType<ModePersist>();
 
+        FindScripts();
         ConfigureGameModeVariables();
         CheckIfNewScale();
 
@@ -95,6 +103,76 @@ public class PlayerController : MonoBehaviour
         headlight.SetActive(false);
         indicatorLight.SetActive(false);
 
+        ProcessLightsAndIndicator();
+    }
+
+    #region Public methods
+
+    // Stop all audio sources
+    public void StopAudio()
+    {
+        bulletAudio.enabled = false;
+        turretRotatingAudio.enabled = false;
+        tankAudio.enabled = false;
+        cooldownAudio.Stop();
+    }
+
+    // Stop all bullet-related actions
+    public void StopAllBullets()
+    {
+        fireInput = 0;
+        isFiring = false;
+        bulletSpeed = 0;
+        bulletEmission.enabled = false;
+        bulletParticles.Stop();
+    }
+
+    #endregion
+
+    #region Start Config Methods
+
+    // Find necessary scripts in the scene
+    void FindScripts()
+    {
+        deathHandler = FindObjectOfType<DeathHandler>();
+        gameMode = FindObjectOfType<GameModeController>();
+        uiScript = FindObjectOfType<UIController>();
+        modePersist = FindObjectOfType<ModePersist>();
+        settingsData = FindObjectOfType<SettingsData>();
+    }
+
+    // Configure variables based on the current game mode
+    void ConfigureGameModeVariables()
+    {
+        playerSpeed = gameMode.CurrentGameMode.GetPlayerSpeed();
+        lookSpeed = gameMode.CurrentGameMode.GetTurretSpeed();
+
+        hasBullets = gameMode.CurrentGameMode.GetPlayerHasBullets();
+        bulletSpeed = gameMode.CurrentGameMode.GetBulletSpeed();
+        cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
+        cooldownDelay = gameMode.CurrentGameMode.GetCooldownDelay();
+
+        hasNewScale = gameMode.CurrentGameMode.GetPlayerHasNewScale();
+        newScale = gameMode.CurrentGameMode.GetPlayerScale();
+    }
+
+    // Check if the player should have a new scale and apply it
+    void CheckIfNewScale()
+    {
+        if (hasNewScale && gameMode.CurrentGameMode.GetName() == "TinyToMighty")
+        {
+            transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+            hasStartedScaling = true;
+        }
+        else if (hasNewScale)
+        {
+            transform.localScale = new Vector3(newScale, newScale, newScale);
+        }
+    }
+
+    // Process lights and indicators based on the chosen level and game mode
+    void ProcessLightsAndIndicator()
+    {
         if (modePersist.ChosenLevel == "Night")
         {
             headlight.SetActive(true);
@@ -114,43 +192,47 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void StopAudio()
+    #endregion
+
+    // Update is called once per frame
+    void Update()
     {
-        bulletAudio.enabled = false;
-        turretRotatingAudio.enabled = false;
-        tankAudio.enabled = false;
-        cooldownAudio.Stop();
-    }
+        // Check if the player is alive and update actions accordingly
+        playerAlive = deathHandler.IsPlayerAlive;
 
-    #region GameMode Config Methods
-
-    void ConfigureGameModeVariables()
-    {
-        playerSpeed = gameMode.CurrentGameMode.GetPlayerSpeed();
-        lookSpeed = gameMode.CurrentGameMode.GetTurretSpeed();
-
-        hasBullets = gameMode.CurrentGameMode.GetPlayerHasBullets();
-        bulletSpeed = gameMode.CurrentGameMode.GetBulletSpeed();
-        cooldownTime = gameMode.CurrentGameMode.GetCooldownAmount();
-        cooldownDelay = gameMode.CurrentGameMode.GetCooldownDelay();
-
-        hasNewScale = gameMode.CurrentGameMode.GetPlayerHasNewScale();
-        newScale = gameMode.CurrentGameMode.GetPlayerScale();
-    }
-
-    void CheckIfNewScale()
-    {
-        if (hasNewScale && gameMode.CurrentGameMode.GetName() == "TinyToMighty")
+        // Toggle tank audio based on settings
+        if (settingsData.SoundFxBool)
         {
-            transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-            hasStartedScaling = true;
+            tankAudio.enabled = true;
         }
-        else if (hasNewScale)
+        else
         {
-            transform.localScale = new Vector3(newScale, newScale, newScale);
+            tankAudio.enabled = false;
+        }
+
+        if (playerAlive)
+        {
+            // Move the tank and apply game mode-specific actions
+            MoveTank();
+            if (gameMode.CurrentGameMode.GetName() == "TinyToMighty")
+            {
+                TinyToMightyScale();
+            }
+
+            if (hasBullets)
+            {
+                // Process shooting and cooldown for the turret
+                ProcessShootingAndCooldown();
+
+                if (cooldownTime <= 0)
+                {
+                    StartCoroutine(BulletCooldown());
+                }
+            }
         }
     }
 
+    // Scale the player character from tiny to mighty over a specified duration
     void TinyToMightyScale()
     {
         Vector3 startScale = new Vector3(0.4f, 0.4f, 0.4f);
@@ -171,34 +253,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    #endregion
-
-    void Update()
-    {
-        playerAlive = deathHandler.IsPlayerAlive;
-
-        if (playerAlive)
-        {
-            MoveTank();
-            if (gameMode.CurrentGameMode.GetName() == "TinyToMighty")
-            {
-                TinyToMightyScale();
-            }
-
-            if (hasBullets)
-            {
-                ProcessShootingAndCooldown();
-
-                if (cooldownTime <= 0)
-                {
-                    StartCoroutine(BulletCooldown());
-                }
-            }
-        }
-    }
-
     #region Turret Control Methods
 
+    // Process shooting and cooldown for the turret
     void ProcessShootingAndCooldown()
     {
         MoveTurret();
@@ -220,30 +277,37 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Move the turret based on player input
     void MoveTurret()
     {
         float newRotation = currentRotation + lookInput.x * lookSpeed * Time.deltaTime;
         SetCurrentRotation(newRotation);
 
-        if (lookInput.magnitude > 0)
+        // Toggle turret rotating audio based on input and settings
+        if (settingsData.SoundFxBool)
         {
-            if (!turretRotatingAudio.isPlaying)
+            if (lookInput.magnitude > 0)
             {
-                turretRotatingAudio.enabled = true;
+                if (!turretRotatingAudio.isPlaying)
+                {
+                    turretRotatingAudio.enabled = true;
+                }
             }
-        }
-        else
-        {
-            turretRotatingAudio.enabled = false;
+            else
+            {
+                turretRotatingAudio.enabled = false;
+            }
         }
     }
 
+    // Set the current rotation of the turret within specified limits
     void SetCurrentRotation(float rot)
     {
         currentRotation = Mathf.Clamp(rot, minRot, maxRot);
         tankTurret.transform.rotation = Quaternion.Euler(0, rot, 0);
     }
 
+    // Manage shooting behavior for the turret
     void ShootTurret()
     {
         bulletEmission.rateOverTime = bulletSpeed;
@@ -251,7 +315,10 @@ public class PlayerController : MonoBehaviour
         if (isFiring && !hasCooldown)
         {
             bulletEmission.enabled = true;
-            bulletAudio.enabled = true;
+            if (settingsData.SoundFxBool)
+            {
+                bulletAudio.enabled = true;
+            }
         }
         else if (!isFiring)
         {
@@ -260,20 +327,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Trigger the turret flash particle system when shooting
     void PlayTurretFlash()
     {
         turretFlash.Play();
     }
 
+    // Coroutine for handling the cooldown period after shooting
     IEnumerator BulletCooldown()
     {
         var smokeEmission = cooldownSmoke.GetComponent<ParticleSystem>().emission;
+
         hasCooldown = true;
         smokeEmission.enabled = true;
-        cooldownAudio.Play();
         fireInput = 0;
         isFiring = false;
+        if (settingsData.SoundFxBool)
+        {
+            cooldownAudio.Play();
+        }
+
         yield return new WaitForSeconds(cooldownDelay);
+
         hasCooldown = false;
         cooldownAudio.Stop();
         smokeEmission.enabled = false;
@@ -281,19 +356,11 @@ public class PlayerController : MonoBehaviour
         uiScript.DisplayBulletCooldown(cooldownTime);
     }
 
-    public void StopAllBullets()
-    {
-        fireInput = 0;
-        isFiring = false;
-        bulletSpeed = 0;
-        bulletEmission.enabled = false;
-        bulletParticles.Stop();
-    }
-
     #endregion
 
     #region Tank Control Methods
 
+    // Move the tank based on player input
     void MoveTank()
     {
         Vector2 movement = ProcessMovement();
@@ -312,6 +379,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Process tank movement based on player input
     Vector2 ProcessMovement()
     {
         float movementX = moveInput.x * playerSpeed * Time.deltaTime;
@@ -327,6 +395,7 @@ public class PlayerController : MonoBehaviour
         return new Vector2(newX - currentX, 0);
     }
 
+    // Process tank rotation based on the provided rotation value
     void ProcessRotation(float rotation)
     {
         Quaternion targetRotation = Quaternion.Euler(0, rotation, 0);
@@ -337,20 +406,24 @@ public class PlayerController : MonoBehaviour
 
     #region Input methods
 
+    // Handle player movement input
     void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
     }
 
+    // Handle player turret rotation input
     void OnLook(InputValue value)
     {
         lookInput = value.Get<Vector2>();
     }
 
+    // Handle player firing input
     void OnFire(InputValue value)
     {
         fireInput = value.Get<float>();
 
+        // Check if there is no cooldown before allowing firing
         if (!hasCooldown)
         {
             if (fireInput == 1)

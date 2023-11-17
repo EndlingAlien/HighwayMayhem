@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638350761060000000
-    m_Hash: 4243935023
+      ticks: 638357850330000000
+    m_Hash: 1770055996
   m_LockFileStatus:
     m_FilePath: /Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638350761060000000
-    m_Hash: 530803121
+      ticks: 638357850330000000
+    m_Hash: 884527493
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,53 @@ m_LocalPackages:
 m_ProjectPath: /Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Packages
 m_EditorVersion: 2021.3.16f1 (4016570cf34f)
 m_ResolvedPackages:
+- packageId: com.sabresaurus.playerprefseditor@https://github.com/sabresaurus/PlayerPrefsEditor.git
+  testable: 0
+  isDirectDependency: 1
+  version: 1.4.1
+  source: 5
+  resolvedPath: /Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.sabresaurus.playerprefseditor@710e074d16
+  assetPath: Packages/com.sabresaurus.playerprefseditor
+  name: com.sabresaurus.playerprefseditor
+  displayName: PlayerPrefs Editor & Utilities
+  author:
+    name: sabresaurus
+    email: 
+    url: https://sabresaurus.com/docs/playerprefs-editor-utilities-documentation/
+  category: 
+  type: 
+  description: PlayerPrefs Editor & Utilities provide an easy way to see what PlayerPrefs
+    your game is using and change them at run-time.
+  status: 0
+  errors: []
+  versions:
+    all: []
+    compatible: []
+    verified: 
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 0
+  repository:
+    type: 
+    url: 
+    revision: 
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
 - packageId: com.unity.collab-proxy@1.17.7
   testable: 0
   isDirectDependency: 1
@@ -672,6 +719,7 @@ m_ResolvedPackages:
     - 1.6.3
     - 1.7.0
     - 1.8.0-pre.1
+    - 1.8.0-pre.2
     compatible:
     - 1.4.4
     - 1.5.0
@@ -680,6 +728,7 @@ m_ResolvedPackages:
     - 1.6.3
     - 1.7.0
     - 1.8.0-pre.1
+    - 1.8.0-pre.2
     verified: 1.4.4
   dependencies:
   - name: com.unity.modules.uielements
@@ -788,6 +837,7 @@ m_ResolvedPackages:
     - 1.3.7
     - 1.3.8
     - 1.3.9
+    - 1.4.0
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12
@@ -804,6 +854,7 @@ m_ResolvedPackages:
     - 1.3.7
     - 1.3.8
     - 1.3.9
+    - 1.4.0
     - 2.0.1-exp.1
     - 2.0.1-exp.2
     - 2.0.1-pre.12

@@ -16,7 +16,7 @@ MonoBehaviour:
   gameIndex: 2
   requiredPoints: 0
   requiredMode: 
-  isGameModeUnlocked: 1
+  isGameModeUnlocked: 0
   hasMoreThanOneRequirement: 0
   RequiredModes: []
   RequiredPoints: 
@@ -34,3 +34,5 @@ MonoBehaviour:
   cooldownAmount: 4.5
   cooldownDelay: 4.5
   playerCanShoot: 2
+  serializedRequiredModes: []
+  serializedRequiredPoints: 

@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class RotateWheels : MonoBehaviour
 {
-   float speed = 10f;
+    // Speed of rotation
+    float speed = 10f;
 
+    // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.right * speed);
+        // Rotate the object around the right axis based on the speed
+        transform.Rotate(Vector3.right * speed * Time.deltaTime);
     }
 }

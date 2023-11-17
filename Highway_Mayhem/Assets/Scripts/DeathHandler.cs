@@ -2,102 +2,121 @@ using UnityEngine;
 
 public class DeathHandler : MonoBehaviour
 {
-   #region Variables
+    #region Variables
 
-AudioSource playerExplodeAudio;
+    AudioSource playerExplodeAudio;
 
-   bool isPlayerAlive = true;
-   public bool IsPlayerAlive { get { return isPlayerAlive; } }
+    bool isPlayerAlive = true;
+    public bool IsPlayerAlive { get { return isPlayerAlive; } }
 
-   //Obstacle scripts
-   RepeatHighway[] repeatHighway;
-   DespawnObject despawnObject;
-   MoveOnHighway moveOnHighway;
-   PlayerController playerController;
+    // Obstacle scripts
+    RepeatHighway[] repeatHighway;
+    DespawnObject despawnObject;
+    MoveOnHighway moveOnHighway;
 
-   //Scripts
-   RotateWheels[] rotateWheels;
-   UIController UIscript;
-   SavedData savedData;
-   GameModeController gameMode;
-   ScoreKeeper scoreKeeper;
+    // Scripts
+    PlayerController playerController;
+    RotateWheels[] rotateWheels;
+    UIController UIscript;
+    GameData gameData;
+    GameModeController gameMode;
+    ScoreKeeper scoreKeeper;
+    SettingsData settingsData;
 
-   #endregion
+    #endregion
 
-   private void Start() {
-      playerExplodeAudio = GetComponent<AudioSource>();
-   }
+    void Start()
+    {
+        // Initialize variables
+        playerExplodeAudio = GetComponent<AudioSource>();
+        settingsData = FindObjectOfType<SettingsData>();
+    }
 
-   public void ActivateGameOver()
-   {
-      StopObstacles();
-      PlayerWheels(false);
-      PlayerBulletsAndAudio();
+    public void ActivateGameOver()
+    {
+        // Stop obstacles, disable player wheels, stop bullets, and play game over audio
+        StopObstacles();
+        PlayerWheels(false);
+        PlayerBulletsAndAudio();
 
-      UIscript = FindObjectOfType<UIController>();
-      UIscript.EnableGameOverCanvas();
-      playerExplodeAudio.Play();
-   }
+        // Activate the Game Over canvas in the UI
+        UIscript = FindObjectOfType<UIController>();
+        UIscript.EnableGameOverCanvas();
 
-   #region Obstacle Method
+        // Play the player explosion audio if sound effects are enabled
+        if (settingsData.SoundFxBool)
+        {
+            playerExplodeAudio.Play();
+        }
+    }
 
-   void StopObstacles()
-   {
-      repeatHighway = FindObjectsOfType<RepeatHighway>();
-      despawnObject = FindObjectOfType<DespawnObject>();
+    #region Obstacle Methods
 
-      isPlayerAlive = false;
+    void StopObstacles()
+    {
+        // Disable obstacle scripts and set player status to not alive
+        repeatHighway = FindObjectsOfType<RepeatHighway>();
+        despawnObject = FindObjectOfType<DespawnObject>();
 
-      foreach (RepeatHighway script in repeatHighway)
-      {
-         script.enabled = false;
-      }
+        isPlayerAlive = false;
 
-      AccessDespawnChildScript();
-   }
+        foreach (RepeatHighway script in repeatHighway)
+        {
+            script.enabled = false;
+        }
 
-   void AccessDespawnChildScript()
-   {
-      for (int i = despawnObject.transform.childCount - 1; i >= 0; i--)
-      {
-         Transform despawnChild = despawnObject.transform.GetChild(i);
+        AccessDespawnChildScript();
+    }
 
-         foreach (Transform child in despawnChild)
-         {
-            moveOnHighway = despawnChild.GetComponent<MoveOnHighway>();
-            if (moveOnHighway == null) { return; }
-            moveOnHighway.enabled = false;
-         }
-      }
-   }
+    void AccessDespawnChildScript()
+    {
+        // Disable child scripts of the DespawnObject
+        for (int i = despawnObject.transform.childCount - 1; i >= 0; i--)
+        {
+            Transform despawnChild = despawnObject.transform.GetChild(i);
 
-   #endregion
+            foreach (Transform child in despawnChild)
+            {
+                moveOnHighway = despawnChild.GetComponent<MoveOnHighway>();
+                if (moveOnHighway == null) { return; }
+                moveOnHighway.enabled = false;
+            }
+        }
+    }
 
-   public void PlayerWheels(bool value)
-   {
-      rotateWheels = FindObjectsOfType<RotateWheels>();
+    #endregion
 
-      foreach (RotateWheels wheel in rotateWheels)
-      {
-         wheel.enabled = value;
-      }
-   }
+    #region Player Methods
 
-   void PlayerBulletsAndAudio()
-   {
-      playerController = FindObjectOfType<PlayerController>();
-      playerController.StopAllBullets();
-      playerController.StopAudio();
-   }
+    public void PlayerWheels(bool value)
+    {
+        // Enable or disable player wheel rotations
+        rotateWheels = FindObjectsOfType<RotateWheels>();
 
+        foreach (RotateWheels wheel in rotateWheels)
+        {
+            wheel.enabled = value;
+        }
+    }
 
-   public void ProcessPlayerScore()
-   {
-      scoreKeeper = FindObjectOfType<ScoreKeeper>();
-      gameMode = FindObjectOfType<GameModeController>();
-      savedData = FindObjectOfType<SavedData>();
+    void PlayerBulletsAndAudio()
+    {
+        // Stop all bullets and audio for the player
+        playerController = FindObjectOfType<PlayerController>();
+        playerController.StopAllBullets();
+        playerController.StopAudio();
+    }
 
-      Debug.Log("Checking score for, GameMode: " + gameMode.CurrentGameMode.GetName() + " with a score of: " + scoreKeeper.Points());
-      savedData.CheckAndSetHighscore(gameMode.CurrentGameMode.GetName(), scoreKeeper.Points());
-   }
+    #endregion
+
+    // UI-only method
+    public void ProcessPlayerScore()
+    {
+        // Update player score in the UI
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        gameMode = FindObjectOfType<GameModeController>();
+        gameData = FindObjectOfType<GameData>();
+
+        gameData.CheckAndSetHighscore(gameMode.CurrentGameMode.GetName(), scoreKeeper.Points());
+    }
 }
