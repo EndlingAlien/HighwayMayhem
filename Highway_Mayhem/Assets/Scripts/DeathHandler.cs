@@ -13,6 +13,7 @@ public class DeathHandler : MonoBehaviour
     RepeatHighway[] repeatHighway;
     DespawnObject despawnObject;
     MoveOnHighway moveOnHighway;
+    AudioSource[] audioSources;
 
     // Scripts
     PlayerController playerController;
@@ -44,8 +45,15 @@ public class DeathHandler : MonoBehaviour
         UIscript.EnableGameOverCanvas();
 
         // Play the player explosion audio if sound effects are enabled
+        audioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in audioSources)
+        {
+            audio.volume = .01f;
+        }
+
         if (settingsData.SoundFxBool)
         {
+            playerExplodeAudio.volume = .8f;
             playerExplodeAudio.Play();
         }
     }

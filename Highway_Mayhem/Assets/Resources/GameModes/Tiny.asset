@@ -14,12 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Tiny
   gameIndex: 9
-  requiredPoints: 10000
+  requiredPoints: 1300
   requiredMode: Trippy
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
   highwaySpeed: 25
   obstacleSpeed: 25
   obstacleSpawnDelay: 0.45

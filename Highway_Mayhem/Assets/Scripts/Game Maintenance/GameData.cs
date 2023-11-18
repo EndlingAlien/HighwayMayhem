@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,7 +25,6 @@ public class GameData : MonoBehaviour
     void Awake()
     {
         InitializeSingleton();
-        ResetIsGameModeUnlocked();
         AddGameModeToList();
     }
 
@@ -141,6 +141,41 @@ public class GameData : MonoBehaviour
             }
         }
         return false;
+    }
+    #endregion
+
+    #region Reset/Debug Methods
+
+    public void FullReset()
+    {
+        //Reset Highscores
+        highScores.Clear();
+        // Resetting unlocked game modes
+        ResetIsGameModeUnlocked();
+        //Reset Lists
+        lockedGameModes.Clear();
+        unlockedGameModes.Clear();
+        // Adding default game modes back
+        AddGameModeToList();
+    }
+
+    public void DebugCheat()
+    {
+        // Unlock all game modes, empty the locked list, and add every game mode to the unlocked list
+        foreach (GameModeSO lockedMode in lockedGameModes)
+        {
+            // Set IsGameModeUnlocked to true for each locked game mode
+            lockedMode.IsGameModeUnlocked = true;
+
+            // Add the unlocked game mode to the list if not already present
+            if (!unlockedGameModes.Contains(lockedMode))
+            {
+                unlockedGameModes.Add(lockedMode);
+            }
+        }
+
+        // Clear the locked game modes list
+        lockedGameModes.Clear();
     }
     #endregion
 }

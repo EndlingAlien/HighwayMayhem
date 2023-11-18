@@ -14,12 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Achilles
   gameIndex: 4
-  requiredPoints: 6000
+  requiredPoints: 2000
   requiredMode: Hard
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
   highwaySpeed: 35
   obstacleSpeed: 35
   obstacleSpawnDelay: 0.4

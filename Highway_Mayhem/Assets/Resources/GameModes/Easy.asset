@@ -16,10 +16,7 @@ MonoBehaviour:
   gameIndex: 0
   requiredPoints: 0
   requiredMode: 
-  isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
+  isGameModeUnlocked: 1
   highwaySpeed: 15
   obstacleSpeed: 15
   obstacleSpawnDelay: 1.8
@@ -34,5 +31,3 @@ MonoBehaviour:
   cooldownAmount: 10
   cooldownDelay: 10
   playerCanShoot: 3
-  serializedRequiredModes: []
-  serializedRequiredPoints: 

@@ -41,6 +41,8 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] Image levelImage;
     [Tooltip("UI refrence for the warning that displays when player tries to play locked mode")]
     [SerializeField] GameObject warningImage;
+    [Tooltip("UI element overlay for the message that is displayed when reset btn is pressed")]
+    [SerializeField] GameObject resetMessage;
     [Space(10)]
 
     [Header("Settings Variables")]
@@ -59,6 +61,8 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] AudioClip clickAudio;
     [Tooltip("Audio source to play above clips")]
     AudioSource audioSource;
+    [Tooltip("Audio for Menu Tank")]
+    [SerializeField] AudioSource tankAudio;
     [Space(10)]
 
     [Header("Image Array's")]
@@ -73,15 +77,15 @@ public class MenuUIController : MonoBehaviour
     [SerializeField] string[] gameModeNames;
     [Space(10)]
 
-    [Header("Canvases")]
-    [Tooltip("List of Canvases in Hierarchy")]
-    [SerializeField] GameObject[] canvases;
-    [Space(10)]
-    
+    [SerializeField] GameObject secretCanvas;
+
     string chosenMode;
     int selectedLevel;
     bool isGameUnlocked;
     GameModeSO currentGameMode;
+    // For debug/Cheat
+    bool eKeyHeld;
+    bool lKeyHeld;
 
     // Scripts
     ModePersist modePersist;
@@ -147,6 +151,18 @@ public class MenuUIController : MonoBehaviour
         {
             ExitGame();
         }
+
+        // Toggle tank audio based on settings
+        if (settingsData.SoundFxBool)
+        {
+            tankAudio.enabled = true;
+        }
+        else
+        {
+            tankAudio.enabled = false;
+        }
+
+        ELDebugCheatCheck();
     }
 
     #region Settings UI Listeners
@@ -227,7 +243,7 @@ public class MenuUIController : MonoBehaviour
     void ConfigureMissionDetails()
     {
         // Configure mission details based on the selected game mode
-        if (gameData.GetUnlockedGameModes().Contains(currentGameMode))
+        if (currentGameMode.IsGameModeUnlocked)
         {
             isGameUnlocked = true;
         }
@@ -251,7 +267,7 @@ public class MenuUIController : MonoBehaviour
     void CheckIfGameUnlocked()
     {
         // Check if the game mode is unlocked and update UI accordingly
-        if (isGameUnlocked)
+        if (isGameUnlocked || currentGameMode.GetName() == "Easy" || currentGameMode.GetName() == "Normal" || currentGameMode.GetName() == "Hard" || currentGameMode.GetName() == "Default")
         {
             requiredGameModeText.fontSize = 12;
             gameModeStatusText.text = "Granted";
@@ -352,6 +368,20 @@ public class MenuUIController : MonoBehaviour
 
     #region UI only methods
 
+    public void ResetAllGameData()
+    {
+        gameData.FullReset();
+        StartCoroutine(ShowResetMessage());
+    }
+
+    IEnumerator ShowResetMessage()
+    {
+        // Display a reset message for a short duration
+        resetMessage.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        resetMessage.SetActive(false);
+    }
+
     public void ExitGame()
     {
         // Exit the game
@@ -436,4 +466,42 @@ public class MenuUIController : MonoBehaviour
     }
 
     #endregion
+
+    void ELDebugCheatCheck()
+    {
+        // Check if E key is held down
+        if (Input.GetKey(KeyCode.E))
+        {
+            eKeyHeld = true;
+        }
+        else
+        {
+            eKeyHeld = false;
+        }
+
+        // Check if L key is held down
+        if (Input.GetKey(KeyCode.L))
+        {
+            lKeyHeld = true;
+        }
+        else
+        {
+            lKeyHeld = false;
+        }
+
+        // Check if both E and L keys are held and spacebar is pressed
+        if (eKeyHeld && lKeyHeld && Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(ShowMessage());
+        }
+    }
+
+    IEnumerator ShowMessage()
+    {
+        // Display a secret message for a short duration
+        secretCanvas.SetActive(true);
+        yield return new WaitForSeconds(3.5f);
+        secretCanvas.SetActive(false);
+        gameData.DebugCheat();
+    }
 }

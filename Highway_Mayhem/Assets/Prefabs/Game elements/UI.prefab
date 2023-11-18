@@ -1224,8 +1224,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.505, y: 0.17344224}
   m_AnchorMax: {x: 0.505, y: 0.17344224}
-  m_AnchoredPosition: {x: -0.000012397766, y: 0}
-  m_SizeDelta: {x: 278.3846, y: 54.7357}
+  m_AnchoredPosition: {x: -0.5944, y: 0}
+  m_SizeDelta: {x: 296.2146, y: 54.7357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &790611951903212708
 CanvasRenderer:
@@ -1333,9 +1333,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 11500000, guid: 25569b14882a944c18eb349a3a4e8f58, type: 3}
-        m_TargetAssemblyTypeName: DeathHandler, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 790611952066097976}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: SavingHighscore
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1395,12 +1395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8959e3dddaacd42ab95d917f4ab68833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvases:
-  - {fileID: 790611952638801636}
-  - {fileID: 790611952485512258}
-  - {fileID: 790611953367674077}
-  - {fileID: 790611952193330557}
-  - {fileID: 790611953319998667}
   healthSliderObject: {fileID: 790611952761342939}
   cooldownSliderObject: {fileID: 8965099422156235790}
   wasdText: {fileID: 3429466718915999414}
@@ -1411,6 +1405,12 @@ MonoBehaviour:
   soundFxToggle: {fileID: 6324295841520290719}
   musicToggle: {fileID: 2453838340488590112}
   musicSlider: {fileID: 6803177864773012299}
+  canvases:
+  - {fileID: 790611952638801636}
+  - {fileID: 790611952485512258}
+  - {fileID: 790611953367674077}
+  - {fileID: 790611952193330557}
+  - {fileID: 790611953319998667}
 --- !u!1 &790611952077785734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2122,7 +2122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &790611952638801656
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Save and Exit
+  m_text: Return to menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fb46980fb6b0642c4b66991e93a86dcd, type: 2}
   m_sharedMaterial: {fileID: 1924190977590049922, guid: fb46980fb6b0642c4b66991e93a86dcd, type: 2}
@@ -2431,8 +2431,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 22
+  m_fontSizeBase: 22
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3759,6 +3759,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 790611952066097976}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: SavingHighscore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 790611952066097976}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: ResetScenePersist
@@ -5622,6 +5634,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 790611952066097976}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: SavingHighscore
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 790611952066097976}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: Reload

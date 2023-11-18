@@ -42,7 +42,8 @@ public class UIController : MonoBehaviour
     [SerializeField] GameObject[] canvases;
     [Space(10)]
 
-    AudioListener mainCam;
+    //AudioListener mainCam;
+    AudioSource[] audioSources;
     Slider healthSlider;
     Slider cooldownSlider;
     bool isGamePaused;
@@ -63,7 +64,7 @@ public class UIController : MonoBehaviour
         isGamePaused = false;
         healthSlider = healthSliderObject.GetComponent<Slider>();
         cooldownSlider = cooldownSliderObject.GetComponent<Slider>();
-        mainCam = FindObjectOfType<AudioListener>();
+        //mainCam = FindObjectOfType<AudioListener>();
 
         FindScripts();
         CreateUIListeners();
@@ -241,7 +242,7 @@ public class UIController : MonoBehaviour
         FindAndEnableCorrectCanvas("GameCanvas", false);
         FindAndEnableCorrectCanvas("PauseMenuCanvas", true);
         deathHandler.PlayerWheels(false);
-        mainCam.enabled = false;
+        AccessAllSounds(false);
         Time.timeScale = 0;
     }
 
@@ -249,11 +250,23 @@ public class UIController : MonoBehaviour
     {
         // Unpausing the game
         Time.timeScale = 1;
-        mainCam.enabled = true;
+        AccessAllSounds(true);
         desiredCanvas.SetActive(false);
         FindAndEnableCorrectCanvas("GameCanvas", true);
         deathHandler.PlayerWheels(true);
         isGamePaused = false;
+    }
+
+    void AccessAllSounds(bool value)
+    {
+        audioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audio in audioSources)
+        {
+            if(!audio.CompareTag("BGMusic"))
+            {
+                audio.enabled = value;
+            }
+        }
     }
 
     #endregion
@@ -283,6 +296,11 @@ public class UIController : MonoBehaviour
     #endregion
 
     #region UI Only Methods
+
+    public void SavingHighscore()
+    {
+        deathHandler.ProcessPlayerScore();
+    }
 
     public void Reload()
     {

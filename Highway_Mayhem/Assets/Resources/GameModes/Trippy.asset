@@ -14,12 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Trippy
   gameIndex: 6
-  requiredPoints: 12000
+  requiredPoints: 1100
   requiredMode: Normal
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
   highwaySpeed: 20
   obstacleSpeed: 20
   obstacleSpawnDelay: 1

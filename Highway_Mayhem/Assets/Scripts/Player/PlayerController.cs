@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
         // Initialize variables and components
@@ -194,7 +193,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    // Update is called once per frame
     void Update()
     {
         // Check if the player is alive and update actions accordingly

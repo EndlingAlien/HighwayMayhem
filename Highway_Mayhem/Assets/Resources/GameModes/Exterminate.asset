@@ -14,15 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: Exterminate
   gameIndex: 8
-  requiredPoints: 0
-  requiredMode: 
+  requiredPoints: 3000
+  requiredMode: Mighty
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 1
-  RequiredModes:
-  - Easy
-  - Normal
-  - Hard
-  RequiredPoints: e02e0000e02e0000e02e0000
   highwaySpeed: 30
   obstacleSpeed: 30
   obstacleSpawnDelay: 0.6

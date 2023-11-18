@@ -86,6 +86,7 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:TEXTCORE_FONT_ENGINE_1_5_OR_NEWER
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/PlaybackEngines/WebGLSupport/Managed/UnityEngine.AccessibilityModule.dll"
@@ -276,6 +277,7 @@
 -r:"/Applications/Unity/Hub/Editor/2021.3.16f1/Unity.app/Contents/NetStandard/ref/2.1.0/netstandard.dll"
 -r:"/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
 -r:"/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.unity.visualscripting@1.7.8/Runtime/VisualScripting.Flow/Dependencies/NCalc/Unity.VisualScripting.Antlr3.Runtime.dll"
+-r:"Library/Bee/artifacts/2000b0aP.dag/PlayerPrefsEditor.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.InputSystem.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Services.Core.Analytics.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.Services.Core.Environments.ref.dll"
@@ -287,20 +289,24 @@
 -r:"Library/Bee/artifacts/2000b0aP.dag/Unity.VisualScripting.State.ref.dll"
 -r:"Library/Bee/artifacts/2000b0aP.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/DeathHandler.cs"
+"Assets/Scripts/Game Maintenance/GameData.cs"
 "Assets/Scripts/Game Maintenance/GameModeController.cs"
 "Assets/Scripts/Game Maintenance/GameModeSO.cs"
 "Assets/Scripts/Game Maintenance/ModePersist.cs"
-"Assets/Scripts/Game Maintenance/SavedData.cs"
+"Assets/Scripts/Game Maintenance/SettingsData.cs"
 "Assets/Scripts/MenuUIController.cs"
+"Assets/Scripts/Obstacles/CarAudio.cs"
 "Assets/Scripts/Obstacles/DeleteParticle.cs"
 "Assets/Scripts/Obstacles/DespawnObject.cs"
 "Assets/Scripts/Obstacles/MoveOnHighway.cs"
 "Assets/Scripts/Obstacles/ObjectSpawner.cs"
+"Assets/Scripts/Obstacles/ObstacleExplosionAudio.cs"
 "Assets/Scripts/Player/DetectBullets.cs"
 "Assets/Scripts/Player/DetectCollisions.cs"
 "Assets/Scripts/Player/FollowPlayer.cs"
 "Assets/Scripts/Player/PlayerController.cs"
 "Assets/Scripts/Player/RotateWheels.cs"
+"Assets/Scripts/RepeatClouds.cs"
 "Assets/Scripts/RepeatHighway.cs"
 "Assets/Scripts/ScoreKeeper.cs"
 "Assets/Scripts/UIController.cs"

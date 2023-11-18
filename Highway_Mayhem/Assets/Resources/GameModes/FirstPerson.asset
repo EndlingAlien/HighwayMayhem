@@ -14,12 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: FirstPerson
   gameIndex: 3
-  requiredPoints: 15000
+  requiredPoints: 1000
   requiredMode: Easy
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 0
-  RequiredModes: []
-  RequiredPoints: 
   highwaySpeed: 20
   obstacleSpeed: 20
   obstacleSpawnDelay: 1

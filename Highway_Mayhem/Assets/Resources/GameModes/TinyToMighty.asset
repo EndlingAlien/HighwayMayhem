@@ -14,14 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemodeName: TinyToMighty
   gameIndex: 5
-  requiredPoints: 0
-  requiredMode: 
+  requiredPoints: 1500
+  requiredMode: Tiny
   isGameModeUnlocked: 0
-  hasMoreThanOneRequirement: 1
-  RequiredModes:
-  - Tiny
-  - Mighty
-  RequiredPoints: 1027000010270000
   highwaySpeed: 25
   obstacleSpeed: 25
   obstacleSpawnDelay: 0.8

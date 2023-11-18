@@ -250,6 +250,10 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 6849910349998193283}
+    - target: {fileID: 1319730832154100502, guid: df9a980ec3be24f958280aa6f3babae5, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 2682948635133038315, guid: df9a980ec3be24f958280aa6f3babae5, type: 3}
       propertyPath: m_Name
       value: Game Controller
@@ -387,6 +391,18 @@ PrefabInstance:
     - target: {fileID: 790611952638801636, guid: 6de99035b4dd04ea6bf35f95d1d6e088, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071040456936096327, guid: 6de99035b4dd04ea6bf35f95d1d6e088, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071040456936096327, guid: 6de99035b4dd04ea6bf35f95d1d6e088, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetScenePersist
+      objectReference: {fileID: 0}
+    - target: {fileID: 4071040456936096327, guid: 6de99035b4dd04ea6bf35f95d1d6e088, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ReturnToMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6de99035b4dd04ea6bf35f95d1d6e088, type: 3}

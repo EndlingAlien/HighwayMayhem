@@ -17,6 +17,7 @@
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/Unity.Services.Core.Scheduler.dll"
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/Unity.Services.Core.Environments.Internal.dll"
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/Unity.Services.Core.Threading.dll"
+-a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/PlayerPrefsEditor.dll"
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/Unity.VisualScripting.State.dll"
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PlayerScriptAssemblies/Unity.Services.Core.Device.dll"
 -a="/Users/sa/CreateWithCode_ Projects/HighwayMayhem/Highway_Mayhem/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/AOT/Newtonsoft.Json.dll"
