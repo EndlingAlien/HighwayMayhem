@@ -1,2 +1,12 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+*.meta linguist-vendored
+*.mat linguist-vendored
+*.anim linguist-vendored
+*.prefab linguist-vendored
+*.unity linguist-vendored
+*.asset linguist-vendored
+ProjectSettings/* linguist-vendored
+Library/* linguist-vendored
+Temp/* linguist-vendored
+*.cs linguist-language=C#
