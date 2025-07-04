@@ -6,7 +6,7 @@
 
 ## Why I Made This
 
-After experimenting with tutorials and adapted projects, I wanted to fully own a game. **Highway Mayhem** was that game: my first original idea turned into a functional game with systems I designed and coded myself.
+After experimenting with tutorials and adapted projects, I wanted to fully own a game. **Highway Mayhem** was that game: My first original idea turned into a functional game with systems I designed and coded myself.
 
 ---
 
@@ -26,7 +26,15 @@ After experimenting with tutorials and adapted projects, I wanted to fully own a
 
 - Unity (2021.x)
 - C#
-- Custom save system and UI components
+- Unity
+  - Basic Animation
+  - Particles & VFX
+  - Lighting
+  - Custom UI
+  - Post-Processing
+  - Soundscape
+  - Materials and Shaders
+  - Custom Cameras
 
 ---
 
